@@ -1,3 +1,5 @@
+package question08;
+
 public class Test01 {
 
     //for문
