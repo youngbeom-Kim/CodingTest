@@ -2,6 +2,7 @@ package question06;
 
 import java.util.Scanner;
 
+//숫자 2개를 입력 받아 시작 숫자에서 종료 숫자까지 1씩 증가하며 출력하시오.
 public class Test02 {
 
     public static void main(String[] args) {

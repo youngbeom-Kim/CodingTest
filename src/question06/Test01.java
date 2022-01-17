@@ -2,6 +2,7 @@ package question06;
 
 import java.util.Scanner;
 
+//사용자의 이름과 인사할 횟수를 입력 받아 출력하시오.
 public class Test01 {
 
     public static void main(String[] args) {
