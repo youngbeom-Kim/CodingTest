@@ -12,16 +12,22 @@ public class Test03 {
 
         Scanner scan = new Scanner(System.in);
 
+        //숫자 입력
+        System.out.print("숫자 : ");
         String str = scan.nextLine();
+
+        //결과 문장과 합
         String result = "";
         int sum = 0;
 
+        //각각 문장의 숫자 구하기
         for (int i = 0; i < str.length(); i++) {
 
             char num = str.charAt(i);
             sum += num -  48;
             if (i == str.length() - 1) {
                 result += num;
+                break;
             }
             result += num + " + ";
 
