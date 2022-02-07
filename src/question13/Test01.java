@@ -12,5 +12,28 @@ public class Test01 {
 
         int[][] nums = new int[5][5];
 
+        int num = 1;
+
+        for (int i = 0; i < nums.length; i++) {
+            if (num % 10 > 0 && num % 10 <= 5) {
+                for (int j = 0; j < nums[0].length; j++) {
+                    nums[i][j] = num;
+                    num++;
+                }
+            } else if (num % 10 > 5 && num <= 9 || num == 0) {
+                for (int j = nums[0].length - 1; j >= 0; j--) {
+                    nums[i][j] = num;
+                    num++;
+                }
+            }
+        }
+
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 5; j++) {
+                System.out.printf("%3d", nums[i][j]);
+            }
+            System.out.println();
+        }
+
     }
 }
