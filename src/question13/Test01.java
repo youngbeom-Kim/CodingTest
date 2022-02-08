@@ -20,7 +20,7 @@ public class Test01 {
                     nums[i][j] = num;
                     num++;
                 }
-            } else if (num % 10 > 5 && num <= 9 || num == 0) {
+            } else if (num % 10 > 5 && num % 10 <= 9 || num % 10 == 0) {
                 for (int j = nums[0].length - 1; j >= 0; j--) {
                     nums[i][j] = num;
                     num++;
