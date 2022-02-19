@@ -74,6 +74,17 @@ public class MyHashMap {
 
     public void remove(String key) {
 
+        for (int i = 0; i < index; i++) {
+            if (this.keys[i].equals(key)) {
+                this.keys[i] = this.keys[i + 1];
+                this.values[i] = this.values[i + 1];
+            }
+        }
+
+        this.keys[index - 1] = null;
+        this.values[index - 1] = null;
+
+        index--;
 
     }
 
