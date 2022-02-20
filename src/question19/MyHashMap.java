@@ -1,5 +1,7 @@
 package question19;
 
+import java.util.Arrays;
+
 public class MyHashMap {
 
     //배열 생성
@@ -85,6 +87,46 @@ public class MyHashMap {
         this.values[index - 1] = null;
 
         index--;
+
+    }
+
+    public boolean containKey(String key) {
+
+        for (int i = 0; i < index; i++) {
+            if (this.keys[i].equals(key)) {
+                return true;
+            }
+        }
+
+        return false;
+
+    }
+
+    public boolean containValue(String value) {
+
+        for (int i = 0; i < index; i++) {
+            if (this.values[i].equals(value)) {
+                return true;
+            }
+        }
+
+        return false;
+
+    }
+
+    public void clear() {
+        this.index = 0;
+    }
+
+    public String toString() {
+
+        String temp = "";
+
+        temp += String.format("keyList : %s\n", Arrays.toString(this.keys));
+        temp += String.format("valueList : %s\n", Arrays.toString(this.values));
+        temp += String.format("index : %s\n", this.index);
+
+        return temp;
 
     }
 
