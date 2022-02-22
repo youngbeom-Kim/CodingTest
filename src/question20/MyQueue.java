@@ -1,5 +1,7 @@
 package question20;
 
+import java.util.Arrays;
+
 //MyQueue
 //추가 - void add(String value)
 //읽기 - String poll()
@@ -18,6 +20,8 @@ public class MyQueue {
     }
 
     public void add(String value) {
+
+        doubling();
 
         this.list[index] = value;
         index++;
@@ -55,6 +59,40 @@ public class MyQueue {
             }
 
         return null;
+    }
+
+    public int size() {
+        return this.index;
+    }
+
+    public String peek() {
+        return this.list[0];
+    }
+
+    public void clear() {
+        this.list = new String[4];
+        index = 0;
+    }
+
+    public void trimToSize() {
+
+        String[] newList = new String[index];
+        for (int i = 0; i < index; i++) {
+            newList[i] = this.list[i];
+            this.list = newList;
+        }
+
+    }
+
+    public String toString() {
+
+        String temp = "";
+
+        temp += String.format("list : %s\n", Arrays.toString(list));
+        temp += String.format("index : %d\n", this.index);
+        temp += "\n";
+
+        return temp;
     }
 
 }
