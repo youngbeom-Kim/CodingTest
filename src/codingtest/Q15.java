@@ -3,7 +3,12 @@ package codingtest;
 //프로그래머스 > 내적
 public class Q15 {
     public int solution(int[] a, int[] b) {
-        int answer = 1234567890;
+        int answer = 0;
+
+        for (int i = 0; i < a.length; i++) {
+            answer += a[i] * b[i];
+        }
+
         return answer;
     }
 
@@ -17,7 +22,7 @@ public class Q15 {
 
         int[] a2 = {-1, 0, 1};
         int[] b2 = {1, 0, -1};
-        System.out.println(sol.solution(a, b));
+        System.out.println(sol.solution(a2, b2));
 
     }
 }
