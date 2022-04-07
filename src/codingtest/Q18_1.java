@@ -8,15 +8,12 @@ import java.util.Map;
 public class Q18_1 {
     public int[] solution(int[] lottos, int[] win_nums) {
 
-        int[] answer = {};
-
         Map<Integer, Boolean> map = new HashMap<Integer, Boolean>();
 
         int zeroCount = 0;
         for (int lotto : lottos) {
             if (lotto == 0) {
                 zeroCount++;
-                //if 문의 끝으로 이동해서 반복문 다시 실행
                 continue;
             }
             map.put(lotto, true);
@@ -27,7 +24,7 @@ public class Q18_1 {
             if (map.containsKey(winNum)) sameCount++;
         }
 
-        int maxRank = 7 - (sameCount + zeroCount);
+        int maxRank = 7 - (zeroCount + sameCount);
         int minRank = 7 - sameCount;
         if (maxRank > 6) maxRank = 6;
         if (minRank > 6) minRank = 6;
