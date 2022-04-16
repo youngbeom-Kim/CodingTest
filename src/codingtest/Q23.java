@@ -4,6 +4,14 @@ package codingtest;
 public class Q23 {
     public int solution(String dartResult) {
         int answer = 0;
+
+        char[] charArr = dartResult.toCharArray();
+
+        for (int i = 0; i < charArr.length; i++) {
+
+        }
+
+
         return answer;
     }
 
