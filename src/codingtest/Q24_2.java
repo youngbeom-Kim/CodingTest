@@ -17,8 +17,19 @@ public class Q24_2 {
             String[] id = re.split(" ");
             String fromId = id[0];
             String toId = id[1];
+            if(!list.containsKey(toId)) list.put(toId, new ArrayList<>());
+            List<Integer> tmp = list.get(toId);
+            if(!tmp.contains(index.get(fromId))) tmp.add(index.get(fromId));
         }
 
+        for (int i = 0; i < id_list.length; i++) {
+            String id = id_list[i];
+            if(list.containsKey(id) && list.get(id).size() >= k) {
+                for (int idx : list.get(id)) {
+                    answer[idx]++;
+                }
+            }
+        }
 
         return answer;
     }
