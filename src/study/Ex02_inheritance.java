@@ -16,6 +16,21 @@ public class Ex02_inheritance {
 
         //w1(); //직접 구현
         //w2(); //직접 구현 + 클래스 추가
+        w3(); //직접 구현 + 클래스 추가 + 상속
+
+    }
+
+    private static void w3() {
+
+        //직접 구현 + 클래스 추가 + 상속
+
+        UtilRandom mrnd = new UtilRandom();
+
+        System.out.println(mrnd.nextInt());
+        System.out.println(mrnd.nextBoolean());
+
+        System.out.println(mrnd.nextTinyInt());
+        System.out.println(mrnd.nextColor());
 
     }
 
