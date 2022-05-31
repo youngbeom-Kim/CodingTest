@@ -62,6 +62,22 @@ public class Ex14_Iterator {
 //        System.out.println(iter.hasNext());
 //        System.out.println(iter.next());
 
+        //iter.hasNext()가 값이 있으면 true
+        // 시작은 BOF (Begin of File)를 커서 (Cursor)가 가리키면서 시작함
+        while(iter.hasNext()) {
+            System.out.println(iter.next());
+        }
+        //끝은 EOF (End of File)을 커서가 가리키면서 끝남
+
+        //데이터 모두 소진.. 커서가 EOF를 가리키기 때문에
+        //System.out.println(iter.next()); //Error
+
+        //만약.. 데이터를 다시 읽고 싶다면??
+
+        //현재 사용중인 커서 : 전진 커서(일방)
+
+        //Iterator를 새로 생성하여 커서를 BOF에서 다시 시작할 수 있다.
+        //System.out.println(iter.next());
 
     }
 
