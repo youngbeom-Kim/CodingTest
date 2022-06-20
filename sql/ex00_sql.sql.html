@@ -1,0 +1,125 @@
+<html>
+<head>
+<title>ex00_sql.sql</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #808080;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+ex00_sql.sql</font>
+</center></td></tr></table>
+<pre><span class="s0">/* 
+ 
+관계형 데이터베이스 
+- 데이터를 표형태로 저장/관리한다. 
+- 데이터끼리의 관계를 표시한다. 
+ 
+1. 데이터 
+ - 단편적인 정보 
+ 
+2. 테이블 
+ - 데이터의 입출력을 위한 데이터 구조 
+ - 표 
+ 
+3. 스키마 
+ - 테이블, 뷰 등이 저장된 데이터의 집합 저장소 
+ - 오라클(사용자 계정) 
+ - 사용자 계정을 새로 만들면, 오라클은 사용자가 취급할 자원들이 저장될 공간을 할당한다. (=스키마) 
+ 
+4. 데이터베이스 
+ - 여러개의 스키마의 집합 저장소 
+ - Oracle XE는 1개의 데이터베이스만 생성 가능 
+ 
+5. 열, Column 
+ - 컬럼, 필드(Field), 속성(Attribute), 특성(Property) 
+ - 테이블의 열로 구성된다. (=구조) 
+ 
+6. 행, Row 
+ - 행, 로우, 레코드(Record), 튜플(Tuple) 
+ - 테이블에 저장된 데이터 1건 
+ - 객체(Object) 
+ 
+SQL, Structured Query Language 
+- 구조화된 질의 언어 
+- 사용자(클라이언트 툴)가 관계형 데이터베이스와 대화할 때 사용하는 언어 
+- 자바에 비해 자연어에 가깝다. 
+ 
+1. DBMS 제작사와 독립적이다. 
+ - SQL은 모든 DBMS 제작사와 독립적으로 개발된다. 
+ 
+2. 표준 SQL(ANSI SQL) 
+ - 표준 SQL 발표 &gt; 각 DBMS 제작사에서 자기 제품에 적용 
+ - SQL은 모든 DBMS에 호환된다. 
+ - SQL-86... SQL-92... SQL2011 
+ 
+3. 대화식 언어이다. 
+ - 질문 &gt; 답변 &gt; 질문 &gt; 답변... 반복 
+ 
+SQL 
+1. ANSI SQL 
+ - 표준 SQL 
+ 
+2. PL/SQL 
+ - 자체 SQL 
+ - 오라클에서만 적용되는 명령어 
+ 
+ANSI SQL 종류 
+1. DDL 
+ - Data Definition Language 
+ - 데이터 정의어 
+ - 테이블, 뷰, 사용자, 인덱스 등의 객체를 생성/수정/삭제하는 명령어 
+ a. create : 생성 
+ b. drop : 삭제 
+ c. alter : 수정 
+ - 데이터베이스 관리자 
+ - 데이터베이스 담당자 
+ - 프로그래머(일부) 
+ 
+2. DML 
+ - Data Manipulation Language 
+ - 데이터 조작어 
+ - 데이터베이스의 데이터를 추가/수정/삭제/조회하는 명령어 
+ - 가장 많이 사용 &gt; CRUD(Create, Update, Read, Delete) 
+ 1. select : 읽기 
+ 2. insert : 추가 
+ 3. update : 수정 
+ 4. delete : 삭제 
+ - 데이터베이스 관리자 
+ - 데이터베이스 담당자 
+ - 프로그래머(****************) 
+ 
+3. DCL 
+ - Data Control Language 
+ - 데이터 제의어 
+ - 계정, 보안, 트랜잭션 등을 제어 
+ 1. commit 
+ 2. rollback 
+ 3. grant 
+ 4. revoke 
+ - 데이터베이스 관리자 
+ - 데이터베이스 담당자 
+ - 프로그래머(일부) 
+ 
+4. DQL 
+ - Data Query Language 
+ - 데이터 질의어 
+ - DML 중에 select만을 이렇게 부른다. 
+ 
+5. TCL 
+ - Transaction Control Language 
+ - DCL 중에 commit, rollback만을 이렇게 부른다. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+*/</span></pre>
+</body>
+</html>

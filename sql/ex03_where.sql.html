@@ -1,0 +1,233 @@
+<html>
+<head>
+<title>ex03_where.sql</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #808080;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #cc7832;}
+.s3 { color: #6a8759;}
+.s4 { color: #6897bb;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+ex03_where.sql</font>
+</center></td></tr></table>
+<pre><span class="s0">/* 
+ 
+select문 
+- select 컬럼리스트 from 테이블; 
+- select 컬럼리스트 from 테이블 where 조건; 
+ 
+1. select 컬럼리스트 
+ - 가져올 컬럼을 지정한다. 
+ - 가져온 컬럼값을 연산한다. (연산자, 함수처리) 
+ 
+2. from 테이블 
+ - 테이블 선택한다. (select의 데이터소스를 지정한다.) 
+ 
+3. where 조건 
+ - 가져올 레코드를 지정한다. 
+ 
+where절 
+ - 가져올 레코드를 지정할 조건을 명시한다. 
+ - 조건에 만족하는 행은 결과셋에 포함하고, 만족하지 못하는 행을 결과셋에서 제외한다. 
+ - 행단위로 걸러내는 필터 역할 
+ - 주로 조건은 비교 연산자 혹은 논리 연산자를 사용해서 구현한다. 
+ 
+실행 순서 
+1. from 테이블 
+2. where 조건 (원하는 행만 남기고 그 이외에는 버린다.) 
+3. select 컬럼 리스트 (원하는 컬럼만 남기고 그 이외에는 버린다.) 
+ 
+*/</span>
+
+<span class="s0">-- 모든 레코드 + 모든 컬럼</span>
+<span class="s2">select </span><span class="s1">* </span><span class="s2">from </span><span class="s1">tblcountry</span><span class="s2">;</span>
+
+<span class="s0">-- 모든 레코드 + 일부 컬럼</span>
+<span class="s2">select name from </span><span class="s1">tblcountry</span><span class="s2">;</span>
+
+<span class="s0">-- 일부 레코드 + 모든 컬럼</span>
+<span class="s2">select </span><span class="s1">* </span><span class="s2">from </span><span class="s1">tblcountry </span><span class="s2">where </span><span class="s1">continent = </span><span class="s3">'AS'</span><span class="s2">;</span>
+
+<span class="s0">-- 일부 레코드 + 일부 컬럼</span>
+<span class="s0">-- 아시아에 속한 나라명??</span>
+<span class="s2">select name from </span><span class="s1">tblcountry </span><span class="s2">where </span><span class="s1">continent = </span><span class="s3">'AS'</span><span class="s2">;</span>
+
+<span class="s0">-- 코메디언 명단</span>
+<span class="s2">select </span><span class="s1">* </span><span class="s2">from </span><span class="s1">tblcomedian</span><span class="s2">;</span>
+
+<span class="s0">-- 직원 명단</span>
+<span class="s2">select </span><span class="s1">* </span><span class="s2">from </span><span class="s1">tblInsa</span><span class="s2">;</span>
+
+<span class="s0">-- 서울에 사는 직원?</span>
+<span class="s2">select </span><span class="s1">* </span><span class="s2">from </span><span class="s1">tblInsa </span><span class="s2">where </span><span class="s1">city = </span><span class="s3">'서울'</span><span class="s2">;</span>
+
+<span class="s0">-- 기획부 직원?</span>
+<span class="s2">select </span><span class="s1">* </span><span class="s2">from </span><span class="s1">tblInsa </span><span class="s2">where </span><span class="s1">buseo = </span><span class="s3">'기획부'</span><span class="s2">;</span>
+
+<span class="s0">-- tblComedian</span>
+<span class="s0">-- 1. 몸무게가 60kg 이상이고, 키가 170cm 미만 사람만 가져오시오.</span>
+<span class="s2">select </span><span class="s1">* </span><span class="s2">from </span><span class="s1">tblcomedian </span><span class="s2">where </span><span class="s1">weight &gt;= </span><span class="s4">60 </span><span class="s2">and </span><span class="s1">height &lt; </span><span class="s4">170</span><span class="s2">;</span>
+
+<span class="s0">-- 2. 여자 중 키가 170cm 이상인 사람만 가져오시오</span>
+<span class="s2">select </span><span class="s1">* </span><span class="s2">from </span><span class="s1">tblcomedian </span><span class="s2">where </span><span class="s1">gender = </span><span class="s3">'f' </span><span class="s2">and </span><span class="s1">height &gt;= </span><span class="s4">170</span><span class="s2">;</span>
+
+<span class="s0">-- tblInsa</span>
+<span class="s0">-- 3. 부서가 '개발부'이고 급여(basicpay)가 150만원 이상 받는 직원들만 가져오시오.</span>
+<span class="s2">select </span><span class="s1">* </span><span class="s2">from </span><span class="s1">tblinsa </span><span class="s2">where </span><span class="s1">buseo = </span><span class="s3">'개발부' </span><span class="s2">and </span><span class="s1">basicpay &gt;= </span><span class="s4">1500000</span><span class="s2">;</span>
+
+<span class="s0">-- 4. 급여(basicpay) + 수당(sudang) 한 금액이 200만원 이상 받고, 서울에 거주하는 직원들만 가져오시오.</span>
+<span class="s2">select </span><span class="s1">* </span><span class="s2">from </span><span class="s1">tblinsa </span><span class="s2">where </span><span class="s1">basicpay + sudang &gt;= </span><span class="s4">2000000 </span><span class="s2">and </span><span class="s1">city = </span><span class="s3">'서울'</span><span class="s2">;</span>
+
+
+<span class="s0">/* 
+ 
+조건절(where절) 에서 주로 사용되는 구문들(연산자 or 함수 or 절) 
+ 
+between 
+ - where 절에서 사용 -&gt; 조건으로 사용 
+ - 범위 조건 
+ - 컬럼명 between 최솟값 and 최댓값 
+ - 컬럼명 between A and B 
+ - 최솟값, 최댓값 : 포함(include) 
+ - 연산자 사용보다 가독성 향상(성능 더 느림) 
+ 
+*/</span>
+
+<span class="s0">-- 몸무게가 60~70kg 사이?</span>
+<span class="s2">select </span><span class="s1">* </span><span class="s2">from </span><span class="s1">tblcomedian </span><span class="s2">where </span><span class="s1">weight &gt;= </span><span class="s4">60 </span><span class="s2">and </span><span class="s1">weight &lt;= </span><span class="s4">70</span><span class="s2">;</span>
+<span class="s2">select </span><span class="s1">* </span><span class="s2">from </span><span class="s1">tblcomedian </span><span class="s2">where </span><span class="s1">weight </span><span class="s2">between </span><span class="s4">64 </span><span class="s2">and </span><span class="s4">66</span><span class="s2">;</span>
+
+<span class="s0">-- 비교 연산에 사용되는 자료형</span>
+<span class="s0">-- 1. 숫자형(number)</span>
+<span class="s2">select </span><span class="s1">* </span><span class="s2">from </span><span class="s1">tblInsa </span><span class="s2">where </span><span class="s1">sudang &gt; </span><span class="s4">150000</span><span class="s2">;</span>
+<span class="s2">select </span><span class="s1">* </span><span class="s2">from </span><span class="s1">tblInsa </span><span class="s2">where </span><span class="s1">sudang &gt;= </span><span class="s4">150000 </span><span class="s2">and </span><span class="s1">sudang &lt;= </span><span class="s4">200000</span><span class="s2">;</span>
+<span class="s2">select </span><span class="s1">* </span><span class="s2">from </span><span class="s1">tblInsa </span><span class="s2">where </span><span class="s1">sudang </span><span class="s2">between </span><span class="s4">150000 </span><span class="s2">and </span><span class="s4">200000</span><span class="s2">;</span>
+
+<span class="s0">-- 2. 문자형</span>
+<span class="s2">select </span><span class="s1">* </span><span class="s2">from </span><span class="s1">tblInsa </span><span class="s2">where name </span><span class="s1">= </span><span class="s3">'홍길동'</span><span class="s2">;</span>
+<span class="s2">select </span><span class="s1">* </span><span class="s2">from </span><span class="s1">tblInsa </span><span class="s2">where name </span><span class="s1">&gt;= </span><span class="s3">'박'</span><span class="s2">;</span>
+<span class="s2">select </span><span class="s1">* </span><span class="s2">from </span><span class="s1">tblInsa </span><span class="s2">where name </span><span class="s1">&gt;= </span><span class="s3">'박' </span><span class="s2">and name </span><span class="s1">&lt;= </span><span class="s3">'최'</span><span class="s2">;</span>
+<span class="s2">select </span><span class="s1">* </span><span class="s2">from </span><span class="s1">tblInsa </span><span class="s2">where name between </span><span class="s3">'박' </span><span class="s2">and </span><span class="s3">'최'</span><span class="s2">;</span>
+
+<span class="s0">-- 3. 날짜/시간형</span>
+<span class="s2">select name, </span><span class="s1">ibsadate </span><span class="s2">from </span><span class="s1">tblinsa</span><span class="s2">; </span><span class="s0">-- order by ibsaadate;</span>
+
+<span class="s0">-- 2010년 1월 1일 이후에 입사한 직원들?</span>
+<span class="s2">select </span><span class="s1">* </span><span class="s2">from </span><span class="s1">tblinsa </span><span class="s2">where </span><span class="s1">ibsadate &gt; </span><span class="s3">'2010-01-01'</span><span class="s2">;</span>
+<span class="s2">select </span><span class="s1">* </span><span class="s2">from </span><span class="s1">tblinsa </span><span class="s2">where </span><span class="s1">ibsadate &lt;= </span><span class="s3">'2010-01-01'</span><span class="s2">;</span>
+
+<span class="s0">-- 2010년 1월 1일 ~ 2010년 12월 31일 사이에 입사한 직원들?</span>
+<span class="s2">select </span><span class="s1">* </span><span class="s2">from </span><span class="s1">tblinsa </span><span class="s2">where </span><span class="s1">ibsadate &gt;= </span><span class="s3">'2010-01-01' </span><span class="s2">and </span><span class="s1">ibsadate &lt; </span><span class="s3">'2011-01-01'</span><span class="s2">;</span>
+<span class="s2">select </span><span class="s1">* </span><span class="s2">from </span><span class="s1">tblinsa </span><span class="s2">where </span><span class="s1">ibsadate </span><span class="s2">between </span><span class="s3">'2010-01-01' </span><span class="s2">and </span><span class="s3">'2011-01-01'</span><span class="s2">;</span>
+
+
+<span class="s0">/* 
+ 
+in 
+ - where절에서 사용 -&gt; 조건으로 사용 
+ - 열거형 조건(제시한 값 중 하나라도 만족하면 통과 
+ - 컬럼명 in (열거값, 열거값, 열거값..._ 
+ - 가독성 향상 
+ 
+*/</span>
+
+<span class="s0">-- tblInsa. 홍보부 + 개발부 + 총무부 직원을 가져오기</span>
+<span class="s2">select </span><span class="s1">* </span><span class="s2">from </span><span class="s1">tblinsa</span>
+    <span class="s2">where </span><span class="s1">buseo = </span><span class="s3">'홍보부' </span><span class="s2">or </span><span class="s1">buseo = </span><span class="s3">'개발부' </span><span class="s2">or </span><span class="s1">buseo = </span><span class="s3">'총무부'</span><span class="s2">;</span>
+
+<span class="s2">select </span><span class="s1">* </span><span class="s2">from </span><span class="s1">tblinsa</span>
+    <span class="s2">where </span><span class="s1">buseo </span><span class="s2">in </span><span class="s1">(</span><span class="s3">'홍보부'</span><span class="s2">, </span><span class="s3">'개발부'</span><span class="s2">, </span><span class="s3">'총무부'</span><span class="s1">)</span><span class="s2">;</span>
+
+<span class="s2">select </span><span class="s1">* </span><span class="s2">from </span><span class="s1">tblinsa</span>
+    <span class="s2">where </span><span class="s1">jikwi </span><span class="s2">in </span><span class="s1">(</span><span class="s3">'부장'</span><span class="s2">, </span><span class="s3">'과장'</span><span class="s1">)</span>
+        <span class="s2">and </span><span class="s1">city </span><span class="s2">in </span><span class="s1">(</span><span class="s3">'서울'</span><span class="s2">, </span><span class="s3">'인천'</span><span class="s1">)</span>
+        <span class="s2">and </span><span class="s1">basicpay </span><span class="s2">between </span><span class="s4">2500000 </span><span class="s2">and </span><span class="s4">2600000</span><span class="s2">;</span>
+
+
+<span class="s0">/* 
+ 
+like 
+ - where절에서 사용 -&gt; 조건으로 사용 
+ - 문자열 패턴 비교(날짜형, 숫자형은 적용 불가) 
+ - 컬럼명 like '패턴 문자열' 
+ - 정규 표현식과 유사 
+ 
+'패턴 문자열' 
+ - 임의 문자와 메타 문자를 사용해서 구성 
+ 1. _ : 임의 1문자 
+ 2. % : 임의의 N문자(N : 0 ~ 무한대) 
+ 
+*/</span>
+
+<span class="s2">select name from </span><span class="s1">tblInsa</span><span class="s2">;</span>
+<span class="s2">select name from </span><span class="s1">tblInsa </span><span class="s2">where name </span><span class="s1">= </span><span class="s3">'홍길동'</span><span class="s2">;</span>
+<span class="s2">select name from </span><span class="s1">tblInsa </span><span class="s2">where name </span><span class="s1">= </span><span class="s3">'홍'</span><span class="s2">;</span>
+
+<span class="s2">select name from </span><span class="s1">tblInsa </span><span class="s2">where name like </span><span class="s3">'홍__'</span><span class="s2">; </span><span class="s0">-- 홍OO</span>
+<span class="s2">select name from </span><span class="s1">tblInsa </span><span class="s2">where name like </span><span class="s3">'홍%'</span><span class="s2">;</span>
+
+<span class="s2">select name from </span><span class="s1">tblInsa </span><span class="s2">where name like </span><span class="s3">'__남'</span><span class="s2">;</span>
+<span class="s2">select name from </span><span class="s1">tblInsa </span><span class="s2">where name like </span><span class="s3">'%남'</span><span class="s2">;</span>
+
+<span class="s2">select </span><span class="s1">* </span><span class="s2">from </span><span class="s1">tblcountry</span><span class="s2">;</span>
+<span class="s2">select </span><span class="s1">* </span><span class="s2">from </span><span class="s1">tblcountry </span><span class="s2">where name like </span><span class="s3">'_국'</span><span class="s2">;</span>
+<span class="s2">select </span><span class="s1">* </span><span class="s2">from </span><span class="s1">tblcountry </span><span class="s2">where name like </span><span class="s3">'___국'</span><span class="s2">;</span>
+<span class="s2">select </span><span class="s1">* </span><span class="s2">from </span><span class="s1">tblcountry </span><span class="s2">where name like </span><span class="s3">'_국' </span><span class="s2">or name like </span><span class="s3">'___국'</span><span class="s2">;</span>
+<span class="s2">select </span><span class="s1">* </span><span class="s2">from </span><span class="s1">tblcountry </span><span class="s2">where name like </span><span class="s3">'%국'</span><span class="s2">;</span>
+
+<span class="s2">select </span><span class="s1">* </span><span class="s2">from </span><span class="s1">tblInsa </span><span class="s2">where </span><span class="s1">tel </span><span class="s2">like </span><span class="s3">'011-____-____'</span><span class="s2">;</span>
+<span class="s2">select </span><span class="s1">* </span><span class="s2">from </span><span class="s1">tblInsa </span><span class="s2">where </span><span class="s1">tel </span><span class="s2">like </span><span class="s3">'011%'</span><span class="s2">;</span>
+
+<span class="s2">select </span><span class="s1">* </span><span class="s2">from </span><span class="s1">tblInsa </span><span class="s2">where </span><span class="s1">ssn </span><span class="s2">like </span><span class="s3">'______-1______'</span><span class="s2">; </span><span class="s0">-- 31명</span>
+<span class="s2">select </span><span class="s1">* </span><span class="s2">from </span><span class="s1">tblInsa </span><span class="s2">where </span><span class="s1">ssn </span><span class="s2">like </span><span class="s3">'______-2______'</span><span class="s2">; </span><span class="s0">-- 29명</span>
+<span class="s2">select </span><span class="s1">* </span><span class="s2">from </span><span class="s1">tblInsa </span><span class="s2">where </span><span class="s1">ssn </span><span class="s2">like </span><span class="s3">'%-1%'</span><span class="s2">;</span>
+
+<span class="s0">-- SQL 구문은 대소문자를 가리지 않는다.</span>
+<span class="s0">-- 데이터는 대소문자를 가린다.</span>
+
+
+<span class="s0">/* 
+ 
+null 
+ - 자바의 null 개념 유사 
+ - 셀이 비어있는 상태 
+ - 직접 표현 가능 : null 상수 
+ - 대다수의 언어는 null은 피연산자가 될 수 없다. 
+ 
+null 조건 
+ - where절에서 사용 -&gt; 조건으로 사용 
+ - 컬럼명 is null 
+ 
+*/</span>
+
+<span class="s0">-- 인구수가 기재되지 않은 나라는??</span>
+<span class="s2">select </span><span class="s1">* </span><span class="s2">from </span><span class="s1">tblcountry </span><span class="s2">where </span><span class="s1">population == </span><span class="s2">null; </span><span class="s0">-- 오류</span>
+<span class="s2">select </span><span class="s1">* </span><span class="s2">from </span><span class="s1">tblcountry </span><span class="s2">where </span><span class="s1">population = </span><span class="s2">null; </span><span class="s0">-- 이 값은 무조건 false</span>
+<span class="s2">select </span><span class="s1">* </span><span class="s2">from </span><span class="s1">tblcountry </span><span class="s2">where </span><span class="s1">population </span><span class="s2">is null;</span>
+
+<span class="s0">-- 인구수가 기재된 나라는??</span>
+<span class="s2">select </span><span class="s1">* </span><span class="s2">from </span><span class="s1">tblcountry </span><span class="s2">where </span><span class="s1">population &lt;&gt; </span><span class="s2">null; </span><span class="s0">-- 이 값도 무조건 false</span>
+<span class="s2">select </span><span class="s1">* </span><span class="s2">from </span><span class="s1">tblcountry </span><span class="s2">where not </span><span class="s1">population </span><span class="s2">is null; </span><span class="s0">-- is null을 부정한 결과</span>
+<span class="s2">select </span><span class="s1">* </span><span class="s2">from </span><span class="s1">tblcountry </span><span class="s2">where </span><span class="s1">population </span><span class="s2">is not null; </span><span class="s0">-- null을 부정한 결과 (더 많이 사용)</span>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+</body>
+</html>
