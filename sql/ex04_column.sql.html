@@ -1,0 +1,151 @@
+<html>
+<head>
+<title>ex04_column.sql</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #808080;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #cc7832;}
+.s3 { color: #6a8759;}
+.s4 { color: #6897bb;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+ex04_column.sql</font>
+</center></td></tr></table>
+<pre><span class="s0">/* 
+ 
+distinct 
+- 컬럼 리스트에서 사용 
+- distinct 컬럼명 
+- 중복값을 제거한다. 
+- (레코드)중복값을 제거한다. 단일 컬럼값 비교가 아닌 행 전체를 비교한다.(****) 
+ 
+*/</span>
+
+<span class="s0">-- tblCountry 테이블에 대륙이 어떤 것들이 있습니까??</span>
+<span class="s2">select distinct </span><span class="s1">continent </span><span class="s2">from </span><span class="s1">tblCountry</span><span class="s2">;</span>
+
+<span class="s0">-- tblComedian 테이블에 성별이 뭐가 있습니까??</span>
+<span class="s2">select distinct </span><span class="s1">gender </span><span class="s2">from </span><span class="s1">tblcomedian</span><span class="s2">;</span>
+
+<span class="s0">-- tblInsa 테이블엔 어떤 부서가 있습니까??</span>
+<span class="s2">select distinct </span><span class="s1">buseo </span><span class="s2">from </span><span class="s1">tblInsa</span><span class="s2">;</span>
+
+<span class="s2">select name from </span><span class="s1">tblInsa</span><span class="s2">; </span><span class="s0">-- 60명</span>
+<span class="s2">select distinct name from </span><span class="s1">tblInsa</span><span class="s2">; </span><span class="s0">-- 60명</span>
+
+<span class="s2">select </span><span class="s1">buseo</span><span class="s2">, </span><span class="s1">jikwi </span><span class="s2">from </span><span class="s1">tblInsa</span><span class="s2">; </span><span class="s0">-- 60개</span>
+<span class="s2">select distinct </span><span class="s1">buseo </span><span class="s2">from </span><span class="s1">tblInsa</span><span class="s2">; </span><span class="s0">-- 7개</span>
+<span class="s2">select distinct </span><span class="s1">jikwi </span><span class="s2">from </span><span class="s1">tblInsa</span><span class="s2">; </span><span class="s0">-- 4개</span>
+<span class="s2">select distinct </span><span class="s1">buseo</span><span class="s2">, </span><span class="s1">jikwi </span><span class="s2">from </span><span class="s1">tblInsa</span><span class="s2">; </span><span class="s0">-- 23개</span>
+<span class="s2">select distinct </span><span class="s1">(buseo</span><span class="s2">, </span><span class="s1">jikwi</span><span class="s2">, </span><span class="s1">city) </span><span class="s2">from </span><span class="s1">tblInsa</span><span class="s2">; </span><span class="s0">-- 이러한 느낌 뒤에 모든 열의 중복값을 제거</span>
+<span class="s0">-- select buseo, distinct jiwki, city from tblInsa; 불가능</span>
+
+
+<span class="s0">/* 
+ 
+case 
+- 컬럼 리스트에서 사용 
+- 조건절에서 사용 
+- 자바에서의 if/switch 문 역할 
+- 조건을 만족하지 못하는 컬럼은 null 반환(********) 
+ 
+*/</span>
+
+<span class="s2">select</span>
+    <span class="s2">last </span><span class="s1">|| </span><span class="s2">first as Name,</span>
+    <span class="s2">case</span>
+        <span class="s2">when </span><span class="s1">gender = </span><span class="s3">'m' </span><span class="s2">then </span><span class="s3">'남자'</span>
+        <span class="s2">when </span><span class="s1">gender = </span><span class="s3">'f' </span><span class="s2">then </span><span class="s3">'여자'</span>
+    <span class="s2">end as </span><span class="s1">GENDER</span>
+<span class="s2">from </span><span class="s1">tblcomedian</span><span class="s2">;</span>
+
+<span class="s2">select</span>
+    <span class="s2">last </span><span class="s1">|| </span><span class="s2">first as Name,</span>
+    <span class="s1">weight</span><span class="s2">,</span>
+    <span class="s2">case</span>
+        <span class="s2">when </span><span class="s1">weight &gt; </span><span class="s4">100 </span><span class="s2">then </span><span class="s3">'과체중'</span>
+        <span class="s2">when </span><span class="s1">weight &gt; </span><span class="s4">50 </span><span class="s2">then </span><span class="s3">'정상체중'</span>
+        <span class="s2">when </span><span class="s1">weight &gt; </span><span class="s4">0 </span><span class="s2">then </span><span class="s3">'저체중'</span>
+    <span class="s2">end as </span><span class="s1">State</span>
+<span class="s2">from </span><span class="s1">tblcomedian</span><span class="s2">;</span>
+
+<span class="s2">select</span>
+    <span class="s2">name,</span>
+    <span class="s2">case</span>
+        <span class="s2">when </span><span class="s1">continent = </span><span class="s3">'AS' </span><span class="s2">then </span><span class="s3">'아시아'</span>
+        <span class="s2">when </span><span class="s1">continent = </span><span class="s3">'EU' </span><span class="s2">then </span><span class="s3">'유럽'</span>
+        <span class="s2">when </span><span class="s1">continent = </span><span class="s3">'AF' </span><span class="s2">then </span><span class="s3">'아프리카'</span>
+        <span class="s0">-- else '기타 -- 조건 이외에는 '기타라는 상수데이터</span>
+        <span class="s2">else </span><span class="s1">continent </span><span class="s0">-- 조건 이외에는 원래 값을 반환</span>
+        <span class="s0">-- else capital -- 조건 이외에는 수도를 반환(절대 하면 안됨) -&gt; 의미가 반드시 같은 데이터만 반환해야 한다!!!</span>
+    <span class="s2">end as </span><span class="s1">CONTINENT</span>
+<span class="s2">from </span><span class="s1">tblCountry</span><span class="s2">;</span>
+
+<span class="s2">select</span>
+    <span class="s1">title</span><span class="s2">,</span>
+    <span class="s2">case</span>
+        <span class="s2">when </span><span class="s1">completedate </span><span class="s2">is not null then </span><span class="s3">'완료된 일'</span>
+        <span class="s2">when </span><span class="s1">completedate </span><span class="s2">is null then </span><span class="s3">'해야할 일'</span>
+    <span class="s2">end as </span><span class="s1">state</span>
+<span class="s2">from </span><span class="s1">tblTodo</span><span class="s2">;</span>
+
+<span class="s2">select</span>
+    <span class="s2">name,</span>
+    <span class="s2">case</span>
+        <span class="s2">when </span><span class="s1">tel </span><span class="s2">is not null then </span><span class="s3">'연락 가능'</span>
+        <span class="s2">when </span><span class="s1">tel </span><span class="s2">is null then </span><span class="s3">'연락 불가능'</span>
+    <span class="s2">end as </span><span class="s1">Tel</span>
+<span class="s2">from </span><span class="s1">tblInsa</span><span class="s2">;</span>
+
+<span class="s2">select</span>
+    <span class="s2">name,</span>
+    <span class="s1">buseo</span><span class="s2">,</span>
+    <span class="s1">jikwi</span><span class="s2">,</span>
+    <span class="s2">case</span>
+        <span class="s2">when </span><span class="s1">ibsadate &gt; </span><span class="s3">'2017-11-24' </span><span class="s2">then </span><span class="s3">'주니어'</span>
+        <span class="s2">when </span><span class="s1">ibsadate &lt;= </span><span class="s3">'2017-11-24' </span><span class="s2">and </span><span class="s1">ibsadate &gt; </span><span class="s3">'2013-11-24' </span><span class="s2">then </span><span class="s3">'시니어'</span>
+        <span class="s2">when </span><span class="s1">ibsadate &lt;= </span><span class="s3">'2013-11-24' </span><span class="s2">then </span><span class="s3">'익스퍼트'</span>
+    <span class="s2">end as </span><span class="s1">grade</span>
+<span class="s2">from </span><span class="s1">tblInsa</span><span class="s2">;</span>
+
+
+<span class="s0">-- tblInsa, sudang</span>
+<span class="s0">-- 1. 직급 별 수당 : 수당 * 배율 &gt; 부장(x2), 과장(x1.7), 대리(x1.5), 사원(x1.3)</span>
+<span class="s2">select</span>
+    <span class="s2">name, </span><span class="s1">buseo</span><span class="s2">, </span><span class="s1">jikwi</span><span class="s2">, </span><span class="s1">sudang</span><span class="s2">,</span>
+    <span class="s2">case</span>
+        <span class="s2">when </span><span class="s1">jikwi = </span><span class="s3">'부장' </span><span class="s2">then </span><span class="s1">sudang * </span><span class="s4">2</span>
+        <span class="s2">when </span><span class="s1">jikwi = </span><span class="s3">'과장' </span><span class="s2">then </span><span class="s1">sudang * </span><span class="s4">1.7</span>
+        <span class="s2">when </span><span class="s1">jikwi = </span><span class="s3">'대리' </span><span class="s2">then </span><span class="s1">sudang * </span><span class="s4">1.5</span>
+        <span class="s2">when </span><span class="s1">jikwi = </span><span class="s3">'사원' </span><span class="s2">then </span><span class="s1">sudang * </span><span class="s4">1.3</span>
+    <span class="s2">end as </span><span class="s1">sudang2</span>
+<span class="s2">from </span><span class="s1">tblInsa</span><span class="s2">;</span>
+
+<span class="s0">-- 2. 직급 별 수당 : 수당 * 배율 &gt; 간부급(부장, 과장) x2, 사원(대리, 사원) x1.5</span>
+<span class="s2">select</span>
+    <span class="s2">name, </span><span class="s1">buseo</span><span class="s2">, </span><span class="s1">jikwi</span><span class="s2">, </span><span class="s1">sudang</span><span class="s2">,</span>
+    <span class="s2">case</span>
+        <span class="s2">when </span><span class="s1">jikwi </span><span class="s2">in </span><span class="s1">(</span><span class="s3">'부장'</span><span class="s2">, </span><span class="s3">'과장'</span><span class="s1">) </span><span class="s2">then </span><span class="s1">sudang * </span><span class="s4">2</span>
+        <span class="s2">when </span><span class="s1">jikwi </span><span class="s2">in </span><span class="s1">(</span><span class="s3">'대리'</span><span class="s2">, </span><span class="s3">'사원'</span><span class="s1">) </span><span class="s2">then </span><span class="s1">sudang * </span><span class="s4">1.5</span>
+    <span class="s2">end as </span><span class="s1">sudang2</span>
+<span class="s2">from </span><span class="s1">tblInsa</span><span class="s2">;</span>
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+</body>
+</html>

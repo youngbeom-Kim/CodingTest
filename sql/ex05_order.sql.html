@@ -1,0 +1,114 @@
+<html>
+<head>
+<title>ex05_order.sql</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #808080;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #cc7832;}
+.s3 { color: #6a8759;}
+.s4 { color: #6897bb;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+ex05_order.sql</font>
+</center></td></tr></table>
+<pre><span class="s0">/* 
+ 
+정렬, Sort 
+- order by 절 
+- 데이터베이스에 저장된 원본 테이블 정렬(X) &gt; select &gt; 결과 테이블에 대한 정렬(O) 
+ 
+select 컬럼리스트 
+from 테이블 
+where 조건 
+order by 정렬 
+ 
+실행순서 
+1. from 테이블 
+2. where 조건 
+3. select 컬럼리스트 
+4. order by 정렬 
+ 
+order by 대상 컬럼 [asc|desc] 
+ 
+*/</span>
+
+<span class="s2">select </span><span class="s1">* </span><span class="s2">from </span><span class="s1">tblCountry </span><span class="s2">order by </span><span class="s1">population </span><span class="s2">asc;</span>
+<span class="s2">select </span><span class="s1">* </span><span class="s2">from </span><span class="s1">tblCountry </span><span class="s2">order by </span><span class="s1">population </span><span class="s2">desc;</span>
+
+
+<span class="s0">-- 정렬의 대사 자료형</span>
+<span class="s0">-- 1. 숫자형</span>
+<span class="s2">select </span><span class="s1">* </span><span class="s2">from </span><span class="s1">tblInsa </span><span class="s2">order by </span><span class="s1">basicpay </span><span class="s2">desc;</span>
+
+<span class="s0">-- 2. 문자형</span>
+<span class="s2">select </span><span class="s1">* </span><span class="s2">from </span><span class="s1">tblInsa </span><span class="s2">order by name asc;</span>
+
+<span class="s0">-- 3. 날짜/시간형</span>
+<span class="s2">select </span><span class="s1">* </span><span class="s2">from </span><span class="s1">tblInsa </span><span class="s2">order by </span><span class="s1">ibsadate </span><span class="s2">asc;</span>
+<span class="s2">select </span><span class="s1">* </span><span class="s2">from </span><span class="s1">tblInsa </span><span class="s2">order by </span><span class="s1">ibsadate </span><span class="s2">desc;</span>
+
+
+<span class="s0">-- 다중 정렬</span>
+<span class="s0">-- 1차 정렬</span>
+<span class="s2">select </span><span class="s1">* </span><span class="s2">from </span><span class="s1">tblInsa </span><span class="s2">order by </span><span class="s1">buseo </span><span class="s2">asc;</span>
+
+<span class="s0">-- 2차 정렬</span>
+<span class="s2">select </span><span class="s1">* </span><span class="s2">from </span><span class="s1">tblInsa </span><span class="s2">order by </span><span class="s1">buseo </span><span class="s2">asc, </span><span class="s1">jikwi </span><span class="s2">desc;</span>
+
+<span class="s0">-- 3차 정렬</span>
+<span class="s2">select </span><span class="s1">* </span><span class="s2">from </span><span class="s1">tblInsa </span><span class="s2">order by </span><span class="s1">buseo </span><span class="s2">asc, </span><span class="s1">jikwi </span><span class="s2">desc, </span><span class="s1">basicpay </span><span class="s2">asc;</span>
+
+
+<span class="s0">-- SQL : 대부분 One-based Index</span>
+<span class="s2">select name, </span><span class="s1">buseo</span><span class="s2">, </span><span class="s1">basicpay</span>
+    <span class="s2">from </span><span class="s1">tblinsa</span>
+        <span class="s2">where </span><span class="s1">jikwi = </span><span class="s3">'사원'</span>
+        <span class="s2">order by </span><span class="s4">3 </span><span class="s2">asc, </span><span class="s4">1 </span><span class="s2">desc, </span><span class="s4">2 </span><span class="s2">asc; </span><span class="s0">-- name : 1, buseo : 2, basicpay : 3</span>
+
+<span class="s2">select </span><span class="s1">* </span><span class="s2">from </span><span class="s1">tblinsa</span>
+    <span class="s2">order by </span><span class="s1">(basicpay + sudang) </span><span class="s2">desc;</span>
+
+<span class="s0">-- 직위별 정렬 &gt; 부장 - 과장 - 대리 - 사원</span>
+<span class="s2">select</span>
+    <span class="s2">name, </span><span class="s1">jikwi</span>
+    <span class="s2">from </span><span class="s1">tblinsa</span>
+        <span class="s2">where </span><span class="s1">buseo = </span><span class="s3">'영업부'</span>
+            <span class="s2">order by </span><span class="s1">jikwi </span><span class="s2">asc;</span>
+
+<span class="s2">select name, </span><span class="s1">jikwi</span>
+    <span class="s2">from </span><span class="s1">tblinsa</span>
+        <span class="s2">where </span><span class="s1">buseo = </span><span class="s3">'영업부'</span>
+            <span class="s2">order by case</span>
+                <span class="s2">when </span><span class="s1">jikwi = </span><span class="s3">'부장' </span><span class="s2">then </span><span class="s4">4</span>
+                <span class="s2">when </span><span class="s1">jikwi = </span><span class="s3">'과장' </span><span class="s2">then </span><span class="s4">3</span>
+                <span class="s2">when </span><span class="s1">jikwi = </span><span class="s3">'대리' </span><span class="s2">then </span><span class="s4">2</span>
+                <span class="s2">when </span><span class="s1">jikwi = </span><span class="s3">'사원' </span><span class="s2">then </span><span class="s4">1</span>
+            <span class="s2">end desc;</span>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+</body>
+</html>
