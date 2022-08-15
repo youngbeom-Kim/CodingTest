@@ -69,6 +69,11 @@ Java
 - 추상 메소드를 하나 이상 가진 클래스
 
 
+* 인터페이스
+- 메소드는 같지만 동작 방식은 다르게 다형성을 주고 싶은 경우 사용.
+- interface, implements, abstract public 메소드, public static final 상수
+- 다중 구현 가능, 모든 메서드가 구현부가 없는 추상메서드로 이루어진 클래스.
+
 */
 
 public class Interview {
