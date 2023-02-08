@@ -1,46 +1,38 @@
 package level02;
 
-//프로그래머스 > level02 > 다음 큰 숫자 (BigInteger)
+import java.util.Stack;
+
+//프로그래머스 > Level02 > 짝지어 제거하기
 public class Q12 {
-    public int solution(int n) {
-        int answer = 0;
+    public int solution(String s){
 
-        String bin = Integer.toBinaryString(n);
+        Stack<String> stack = new Stack<>();
 
-        int one = 0;
+        String a = "";
 
-        for (int i = 0; i < bin.length(); i++) {
-            if (bin.charAt(i) == '1') {
-                one++;
+        for (int i = 0; i < s.length(); i++) {
+            stack.push(s.substring(i, i+1));
+            if (i > 0 && a.equals(stack.peek())) {
+                stack.pop();
+                stack.pop();
+            }
+            if (!stack.isEmpty()) {
+                a = stack.peek();
             }
         }
 
-        while (true) {
-            n++;
-            int one2 = 0;
-            String bin2 = Integer.toBinaryString(n);
-            for (int i = 0; i < bin2.length(); i++) {
-                if (bin2.charAt(i) == '1') {
-                    one2++;
-                }
-            }
-            if (one == one2) {
-                answer = n;
-                break;
-            }
-        }
-
-        return answer;
+        return stack.isEmpty() ? 1 : 0;
     }
+
     public static void main(String[] args) {
 
         Q12 sol = new Q12();
 
-        int n = 78;
-        System.out.println(sol.solution(n));
+        String s = "baabaa";
+        System.out.println(sol.solution(s));
 
-        int n1 = 15;
-        System.out.println(sol.solution(n1));
+        String s2 = "cdcd";
+        System.out.println(sol.solution(s2));
 
     }
 }

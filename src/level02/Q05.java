@@ -1,26 +1,35 @@
 package level02;
 
-import java.util.Arrays;
-
-//프로그래머스 > level02 > 최댓값과 최솟값
+//프로그래머스 > level02 > 이진 변환 반복하기
 public class Q05 {
-    public String solution(String s) {
-        String answer = "";
+    public int[] solution(String s) {
+        int[] answer = new int[2];
 
-        //값을 넣어둘 배열
-        String strings[] = s.split(" ");
-        int nums[] = new int[strings.length];
+        String num = "";
+        int conv = 0;
+        int count = 0;
 
-        //기존 String값을 int로 변환 후 오름차순으로 정렬
-        for (int i = 0; i < strings.length; i++) {
-            nums[i] = Integer.parseInt(strings[i]);
-            if (i == strings.length - 1) {
-                Arrays.sort(nums);
+
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if (c == '1') {
+                num += c;
+            } else {
+                count++;
+            }
+            if (i == s.length() - 1) {
+                conv++;
+                s = Integer.toBinaryString(num.length());
+                if (num.equals("1")) {
+                    break;
+                }
+                num = "";
+                i = -1;
             }
         }
 
-        //int인 값을 String으로 변환 후 값 넣어주기
-        answer = String.valueOf(nums[0]) + " " + String.valueOf(nums[nums.length - 1]);
+        answer[0] = conv;
+        answer[1] = count;
 
         return answer;
     }
@@ -29,14 +38,14 @@ public class Q05 {
 
         Q05 sol = new Q05();
 
-        String s = "1 2 3 4";
+        String s = "110010101001";
         System.out.println(sol.solution(s));
 
-        String s1 = "-1 -2 -3 -4";
+        String s1 = "01110";
         System.out.println(sol.solution(s1));
 
-        String s2 = "-1 -1";
-        System.out.println(s2);
+        String s2 = "1111111";
+        System.out.println(sol.solution(s2));
 
     }
 }

@@ -1,35 +1,30 @@
 package level02;
 
-import java.util.*;
+import java.math.BigInteger;
 
-//프로그래머스 > Level02 > 오픈채팅방
+// 프로그래머스 > level02 > 멀쩡한 사각형
 public class Q02 {
-    public String[] solution(String[] record) {
-        String[] answer = {};
+    public long solution2(int w, int h) {
 
-        //uid
-        Map<String, String> id = new HashMap<>();
+        long totalCount = (long) w * (long) h;
+        long diagonalCount = w + h - BigInteger.valueOf(w).gcd(BigInteger.valueOf(h)).longValue();
 
-        for (String str : record) {
-            String[] ss = str.split(" ");
-            if ("Leave".equals(ss[0])) continue;
-            id.put(ss[1], ss[2]);
-        }
+        return totalCount - diagonalCount;
 
-        List<String> result = new ArrayList<>();
+    }
+    public long solution(int w, int h) {
+        long answer = 1;
 
-        for(String str : record) {
-            String[] ss = str.split(" ");
+        int min = (w < h) ? w : h;
+        int gcd = 0;
 
-            if ("Enter".equals(ss[0])) {
-                result.add(id.get(ss[1]) + "님이 들어왔습니다.");
-            } else if ("Leave".equals(ss[0])) {
-                result.add(id.get(ss[1]) + "님이 나갔습니다.");
+        for (int i = 1; i <= min; i++) {
+            if (w % i == 0 && h % i == 0) {
+                gcd = i;
             }
         }
 
-        answer = new String[result.size()];
-        answer = result.toArray(answer);
+        answer = ((long) w * (long) h) - ((((long) w / gcd) + ((long) h / gcd) - 1) * gcd);
 
         return answer;
     }
@@ -38,12 +33,9 @@ public class Q02 {
 
         Q02 sol = new Q02();
 
-        String[] record = {"Enter uid1234 Muzi",
-                        "Enter uid4567 Prodo",
-                        "Leave uid1234",
-                        "Enter uid1234 Prodo",
-                        "Change uid4567 Ryan"};
-        System.out.println(Arrays.toString(sol.solution(record)));
+        int w = 8;
+        int h = 12;
+        System.out.println(sol.solution(w, h));
 
     }
 }

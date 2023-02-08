@@ -1,40 +1,59 @@
 package level02;
 
-//프로그래머스 > level02 > 피보나치 수
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+//프로그래머스 > Level02 > 카펫
 public class Q11 {
-    public int solution(int n) {
-        int answer =  0;
+    public int[] solution(int brown, int yellow) {
+        int[] answer = new int[2];
 
-        int n1 = 0;
-        int n2 = 1;
-        int num = 1234567;
-
-        for (int i = 2; i <= n; i++) {
-            answer = n1 + n2 % num;
-            n1 = n2 % num;
-            n2 = answer % num;
+        //공약수 배열 + 공약수 담기
+        int sum = brown + yellow;
+        List<Integer> arr = new ArrayList<>();
+        for (int i = 1; i <= sum; i++) {
+            if (sum % i == 0) {
+                arr.add(i);
+            }
         }
 
-        return answer % num;
+        //규칙성 (Yellow가 두 공약수 값의 - 2를 하고 곱했을때 같으면 정답)
+        for (int i = 0; i < arr.size(); i++) {
+            int color = (arr.get(i) - 2) * (arr.get(arr.size() - i - 1) - 2);
+            if (color == yellow) {
+                answer[0] = arr.get(i);
+                answer[1] = arr.get(arr.size() - i - 1);
+            }
+        }
+
+        return answer;
     }
 
     public static void main(String[] args) {
 
-        //0 = 0, 1 = 1
-        //2 = 0 + 1 = 1
-        //3 = 1 + 1 = 2
-        //4 = 1 + 2 = 3
-        //5 = 2 + 3 = 5
-        //6 = 3 + 5 = 8
-        //7 = 5 + 8 = 13
-
         Q11 sol = new Q11();
 
-        int n = 3;
-        System.out.println(sol.solution(n));
+        int brown = 10;
+        int yellow = 2;
+        System.out.println(Arrays.toString(sol.solution(brown, yellow)));
+        //1, 2, 3, 4, 6, 12
 
-        int n2 = 100;
-        System.out.println(sol.solution(n2));
+        int brown2 = 8;
+        int yellow2 = 1;
+        System.out.println(Arrays.toString(sol.solution(brown2, yellow2)));
+        //1, 3, 9
+
+        int brown3 = 24;
+        int yellow3 = 24;
+        System.out.println(Arrays.toString(sol.solution(brown3, yellow3)));
+        //1, 2, 3, 4, 6, 8, 12, 16, 24, 48
+
+        int brown4 = 50;
+        int yellow4 = 22;
+        System.out.println(Arrays.toString(sol.solution(brown4, yellow4)));
+        //1, 2, 3, 4, 6, 8, 9, 12, 18, 24, 36, 72
 
     }
+
 }

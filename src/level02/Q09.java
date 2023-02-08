@@ -1,63 +1,40 @@
 package level02;
 
-//프로그래머스 > level02 > 올바른 괄호
+//프로그래머스 > level02 > 피보나치 수
 public class Q09 {
-    boolean solution(String s) {
-        boolean answer = true;
+    public int solution(int n) {
+        int answer =  0;
 
-//        int cum = 0;
-//        String[] arr = s.split("");
-//        for (String paren : arr) {
-//            cum += "(".equals(paren) ? 1 : -1;
-//            if(cum < 0) return false;
-//        }
+        int n1 = 0;
+        int n2 = 1;
+        int num = 1234567;
 
-         int lcount = 0;
-         int rcount = 0;
+        for (int i = 2; i <= n; i++) {
+            answer = n1 + n2 % num;
+            n1 = n2 % num;
+            n2 = answer % num;
+        }
 
-         for (int i = 0; i < s.length(); i++) {
-             if (s.charAt(i) == '(') {
-                 lcount++;
-             } else if (s.charAt(i) == ')') {
-                 rcount++;
-             }
-
-             if (lcount - rcount < 0) {
-                 answer = false;
-                 break;
-             }
-
-         }
-
-         if (lcount != rcount) {
-             answer = false;
-         } else if (s.charAt(0) == ')') {
-             answer = false;
-         } else if (s.charAt(s.length() - 1) == '(') {
-             answer = false;
-         }
-
-        return answer;
+        return answer % num;
     }
+
     public static void main(String[] args) {
+
+        //0 = 0, 1 = 1
+        //2 = 0 + 1 = 1
+        //3 = 1 + 1 = 2
+        //4 = 1 + 2 = 3
+        //5 = 2 + 3 = 5
+        //6 = 3 + 5 = 8
+        //7 = 5 + 8 = 13
 
         Q09 sol = new Q09();
 
-        String s = "()()";
-        System.out.println(sol.solution(s));
+        int n = 3;
+        System.out.println(sol.solution(n));
 
-        String s1 = "(())()";
-        System.out.println(sol.solution(s1));
-
-        String s2 = ")()(";
-        System.out.println(sol.solution(s2));
-
-        String s3 = "(()(";
-        System.out.println(sol.solution(s3));
-
-        String s4 = "())))(((()";
-        System.out.println(sol.solution(s4));
+        int n2 = 100;
+        System.out.println(sol.solution(n2));
 
     }
 }
-

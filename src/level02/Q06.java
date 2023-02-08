@@ -1,35 +1,34 @@
 package level02;
 
-//프로그래머스 > level02 > Jadencase 문자열 만들기
+import java.util.Arrays;
+
+//프로그래머스 > level02 > 최솟값 만들기
 public class Q06 {
-    public String solution(String s) {
-        String answer = "";
+    public int solution(int[] A, int[] B) {
+        int answer = 0;
 
-        //String을 split을 이용해서 배열로 나누기
-        String strings[] = s.toLowerCase().split(" ");
+        Arrays.sort(A);
+        Arrays.sort(B);
 
-
-
-        //각 단어의 첫번째 단어를 대문자로 바꾸기
-        for (int i = 0; i < strings.length; i++) {
-            strings[i] = strings[i].substring(0, 1).toUpperCase() + strings[i].substring(1);
+        for (int i = 0; i < A.length; i++) {
+            int a = A[i];
+            int b = B[B.length - i - 1];
+            answer += a * b;
         }
-
-        //join을 이용해서 합치기
-        answer = String.join(" ", strings);
 
         return answer;
     }
-
     public static void main(String[] args) {
 
         Q06 sol = new Q06();
 
-        String s = "3people unFollowed me";
-        System.out.println(sol.solution(s));
+        int[] A = {1, 4, 2};
+        int[] B = {5, 4, 4};
+        System.out.println(sol.solution(A, B));
 
-        String s1 = "for the last week";
-        System.out.println(sol.solution(s1));
+        int[] A2 = {1, 2};
+        int[] B2 = {3, 4};
+        System.out.println(sol.solution(A2, B2));
 
     }
 }

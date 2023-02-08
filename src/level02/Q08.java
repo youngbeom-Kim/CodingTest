@@ -1,19 +1,24 @@
 package level02;
 
-import java.util.Arrays;
-
-//프로그래머스 > level02 > 최솟값 만들기
+//프로그래머스 > level02 > 숫자의 표현
 public class Q08 {
-    public int solution(int[] A, int[] B) {
+    public int solution(int n) {
         int answer = 0;
 
-        Arrays.sort(A);
-        Arrays.sort(B);
+        int sum = 0;
 
-        for (int i = 0; i < A.length; i++) {
-            int a = A[i];
-            int b = B[B.length - i - 1];
-            answer += a * b;
+        for (int i = 1; i <= n; i++) {
+            for (int j = i; j <= n; j++) {
+                sum += j;
+                if (sum == n) {
+                    answer++;
+                    sum = 0;
+                    break;
+                } else if (sum > n) {
+                    sum = 0;
+                    break;
+                }
+            }
         }
 
         return answer;
@@ -22,13 +27,8 @@ public class Q08 {
 
         Q08 sol = new Q08();
 
-        int[] A = {1, 4, 2};
-        int[] B = {5, 4, 4};
-        System.out.println(sol.solution(A, B));
-
-        int[] A2 = {1, 2};
-        int[] B2 = {3, 4};
-        System.out.println(sol.solution(A2, B2));
+        int n = 15;
+        System.out.println(sol.solution(n));
 
     }
 }

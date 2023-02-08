@@ -1,20 +1,22 @@
 package level02;
 
-// 프로그래머스 > level02 > 멀쩡한 사각형
+//프로그래머스 > Level02 > 124 나라의 숫자
 public class Q03 {
-    public long solution(int w, int h) {
-        long answer = 1;
+    public String solution(int n) {
+        String answer = "";
 
-        int min = (w < h) ? w : h;
-        int gcd = 0;
+        String[] numbers = {"4", "1", "2"};
 
-        for (int i = 1; i <= min; i++) {
-            if (w % i == 0 && h % i == 0) {
-                gcd = i;
-            }
+        int num = n;
+
+        while (num > 0) {
+            int remainder = n % 3;
+            num = num / 3;
+
+            if (remainder == 0) num--;
+
+            answer = numbers[remainder] + answer;
         }
-
-        answer = ((long) w * (long) h) - ((((long) w / gcd) + ((long) h / gcd) - 1) * gcd);
 
         return answer;
     }
@@ -23,9 +25,17 @@ public class Q03 {
 
         Q03 sol = new Q03();
 
-        int w = 8;
-        int h = 12;
-        System.out.println(sol.solution(w, h));
+        int n = 1;
+        System.out.println(sol.solution(n));
+
+        int n2 = 2;
+        System.out.println(sol.solution(n2));
+
+        int n3 = 3;
+        System.out.println(sol.solution(n3));
+
+        int n4 = 4;
+        System.out.println(sol.solution(n4));
 
     }
 }
