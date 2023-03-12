@@ -3,6 +3,7 @@ package level01;
 import java.util.Arrays;
 import java.util.PriorityQueue;
 
+//프로그래머스 > Level 01 > 명예의 전당(1)
 public class Q55 {
     public int[] solution(int k, int[] score) {
         int[] answer = new int[score.length];
