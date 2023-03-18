@@ -19,6 +19,7 @@ public class Q58 {
                     }
                 }
             }
+
             sChar = (char) (sChar + index);
 
             answer += sChar;
