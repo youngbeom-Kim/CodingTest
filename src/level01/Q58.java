@@ -5,25 +5,22 @@ public class Q58 {
     public String solution(String s, String skip, int index) {
         String answer = "";
 
-        for (int i = 0; i < s.length(); i++) {
-            char sChar = s.charAt(i);
-            for (int j = 0; j < skip.length(); j++) {
-                char skipChar = skip.charAt(j);
-                if (sChar + index - skipChar >= 0) {
-                    sChar = (char) (sChar + 1);
-                }
-                if (sChar + index > 'z') {
-                    sChar = (char) (sChar + index - 26);
-                    if (sChar - skipChar <= 0) {
-                        sChar = (char) (sChar + 1);
-                    }
+        String alpha = "abcdefghijklmnopqrstuvwxyz";
+
+        for (int i = 0; i < skip.length(); i++) {
+            for (int j = 0; j < alpha.length(); j++) {
+                if (skip.charAt(i) == alpha.charAt(j)) {
+                    alpha = alpha.replace(String.valueOf(alpha.charAt(j)), String.valueOf(""));
+                    break;
                 }
             }
+        }
 
+        System.out.println(alpha);
 
-            sChar = (char) (sChar + index);
-
-            answer += sChar;
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            System.out.println(alpha.indexOf(c));
 
         }
 
