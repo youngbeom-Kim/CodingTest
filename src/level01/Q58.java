@@ -21,6 +21,7 @@ public class Q58 {
         for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
             System.out.println(alpha.indexOf(c));
+
         }
 
         return answer;
