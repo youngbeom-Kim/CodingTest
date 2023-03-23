@@ -1,7 +1,5 @@
 package question10;
 
-import javafx.scene.transform.Scale;
-
 import java.util.Scanner;
 
 //파일명 10개를 입력받아 각 확장자별로 총 개수를 출력하시오,

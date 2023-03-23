@@ -1,7 +1,5 @@
 package question12;
 
-import sun.nio.ch.sctp.SctpNet;
-
 import java.util.Scanner;
 
 //입력받은 문장에서 숫자들을 찾아 그 합을 구하시오.

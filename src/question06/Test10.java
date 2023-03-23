@@ -1,8 +1,5 @@
 package question06;
 
-import com.sun.xml.internal.bind.v2.runtime.output.XmlOutputAbstractImpl;
-
-import javax.smartcardio.CommandAPDU;
 
 //서기 1년 1월 1일부터 오늘까지 며칠째인지 합을 구하시오.
 //Calendar, Date 사용 금지

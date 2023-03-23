@@ -1,7 +1,5 @@
 package question07;
 
-import sun.nio.ch.sctp.SctpNet;
-
 import java.util.Scanner;
 
 //숫자를 10개 입력받아 한글로 변환 후 출력하시오.
