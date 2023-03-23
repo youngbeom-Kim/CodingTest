@@ -8,20 +8,19 @@ public class Q58 {
         String alpha = "abcdefghijklmnopqrstuvwxyz";
 
         for (int i = 0; i < skip.length(); i++) {
-            for (int j = 0; j < alpha.length(); j++) {
-                if (skip.charAt(i) == alpha.charAt(j)) {
-                    alpha = alpha.replace(String.valueOf(alpha.charAt(j)), String.valueOf(""));
-                    break;
-                }
-            }
+            char c = skip.charAt(i);
+            alpha = alpha.replace(String.valueOf(alpha.charAt((alpha.indexOf(c)))), "");
         }
 
-        System.out.println(alpha);
 
         for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
-            System.out.println(alpha.indexOf(c));
-
+            if (alpha.indexOf(c) + index > alpha.length() - 1) {
+                c = (char) alpha.charAt(alpha.indexOf(c) + index - alpha.length());
+            } else {
+                c = (char) alpha.charAt(alpha.indexOf(c) + index);
+            }
+            answer += c;
         }
 
         return answer;
