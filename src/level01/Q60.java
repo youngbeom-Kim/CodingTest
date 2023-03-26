@@ -10,6 +10,13 @@ public class Q60 {
 
         HashMap<String, Integer> map = new HashMap<>();
 
+        for (String term : terms) {
+            int space = term.indexOf(" ");
+            map.put(term.substring(0, space), Integer.parseInt(term.substring(space + 1, term.length())));
+        }
+
+        System.out.println(map);
+
         return answer;
     }
 
