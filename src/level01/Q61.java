@@ -6,6 +6,7 @@ import java.util.Arrays;
 public class Q61 {
     public int[] solution(String[] wallpaper) {
         int[] answer = {};
+
         return answer;
     }
 
