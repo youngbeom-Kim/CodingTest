@@ -7,9 +7,6 @@ public class Q17 {
     public int[] solution(int[] progresses, int[] speeds) {
         int[] answer = {};
 
-
-
-
         return answer;
     }
 
