@@ -5,7 +5,6 @@ import java.util.*;
 //프로그래머스 > Level 02 > 귤 고르기
 public class Q18 {
     public int solution(int k, int[] tangerine) {
-
         HashMap<Integer, Integer> map = new HashMap<>();
 
         for (int i = 0; i < tangerine.length; i++) {
