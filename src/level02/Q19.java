@@ -7,7 +7,20 @@ public class Q19 {
     public int[] solution(int n, long left, long right) {
         int[] answer = {};
 
+        int[] temp = new int[n*n];
 
+        temp[0] = 1;
+
+        for (int i = 1; i < n; i++) {
+            for (int j = i * n; j < (i + 1) * n; j++) {
+                temp[j] = i + 1;
+            }
+            for (int j = i + 1; j < (i + 1) * (n - 1); j *= (i + 1)) {
+                temp[j] = i + 1;
+            }
+        }
+
+        System.out.println(Arrays.toString(temp));
 
         return answer;
     }
@@ -20,9 +33,9 @@ public class Q19 {
         long right = 5;
         System.out.println(Arrays.toString(sol.solution(n, left, right)));
 
-        int n2 = 3;
-        long left2 = 2;
-        long right2 = 5;
+        int n2 = 4;
+        long left2 = 7;
+        long right2 = 14;
         System.out.println(Arrays.toString(sol.solution(n2, left2, right2)));
 
     }
