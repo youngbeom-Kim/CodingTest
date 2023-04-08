@@ -17,6 +17,7 @@ public class Q19 {
             }
             for (int j = i + 1; j < (i + 1) * (n - 1); j *= (i + 1)) {
                 temp[j] = i + 1;
+
             }
         }
 
