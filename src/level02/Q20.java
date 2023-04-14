@@ -98,7 +98,6 @@ public class Q20 {
             }
         }
 
-
         //str2 두 단어씩 나눠서 list2 에 넣기
         for (int i = 0; i < str2.length() - 1; i++) {
             char c1 = str2.charAt(i);
