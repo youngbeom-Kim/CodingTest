@@ -15,19 +15,23 @@ public class Q23 {
             list.add(citations[i]);
         }
 
+        //내림차순
         list.sort(Comparator.reverseOrder());
 
         for (int i = 0; i < list.size(); i++) {
+            //같은 값이 있을 경우
             if (list.get(i) == i + 1) {
                 answer = i + 1;
                 break;
             }
+            //같은 값은 없고 n번째에 이상의 값이 있을 경우
             if (list.get(i) < i + 1) {
                 answer = i;
                 break;
             }
         }
 
+        //모든 값이 같거나 0일 경우
         if (answer == 0 && citations[0] > 0) {
             answer = citations.length;
         }
