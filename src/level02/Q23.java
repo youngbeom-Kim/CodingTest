@@ -36,6 +36,7 @@ public class Q23 {
             answer = citations.length;
         }
 
+
         return answer;
     }
     public static void main(String[] args) {
