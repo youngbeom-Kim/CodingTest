@@ -16,6 +16,7 @@ public class Q24 {
                     break;
                 }
             }
+
             if (j == want.length) answer++;
         }
 
