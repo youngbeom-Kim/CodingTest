@@ -18,15 +18,25 @@ public class Q62 {
             String dir = route[0];
             int dis = Integer.valueOf(route[1]);
 
+            //최대 거리 이상 또는 최소 거리 이하로 이동하면 최대 거리에 머무르기
+            if (start > parks.length()) {
+                start = parks.length() - 1;
+            } else if (start < 0) {
+                start = 0;
+            }
+
+            //만약 가는 길에 장애물이 있을 시
+
+
             //거리 이동
             if (dir.equals("E")) {
-
+                start += 1;
             } else if (dir.equals("W")) {
-
+                start -= 1;
             } else if (dir.equals("N")) {
-
+                start += 3;
             } else if (dir.equals("S")) {
-
+                start -= 3;
             }
         }
 
