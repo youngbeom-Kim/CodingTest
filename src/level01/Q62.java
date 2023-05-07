@@ -27,7 +27,6 @@ public class Q62 {
 
             //만약 가는 길에 장애물이 있을 시
 
-
             //거리 이동
             if (dir.equals("E")) {
                 start += 1;
