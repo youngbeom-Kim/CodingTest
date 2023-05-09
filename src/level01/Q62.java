@@ -46,7 +46,6 @@ public class Q62 {
             //거리 이동
             start += move * dis;
 
-
             //최대 거리 이상 또는 최소 거리 이하로 이동하면 최대 거리에 머무르기
             if (start > parks.length()) {
                 start = parks.length() - 1;
