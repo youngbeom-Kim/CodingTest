@@ -12,6 +12,8 @@ public class Test2 {
 
         for (int i = 0; i < numbers.length; i++) {
 
+
+
         }
 
         return answer;
