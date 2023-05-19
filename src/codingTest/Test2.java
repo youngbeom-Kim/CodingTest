@@ -12,9 +12,22 @@ public class Test2 {
 
         for (int i = 0; i < numbers.length; i++) {
 
+            if (home.get(numbers[i][0]) == null) {
+                home.put(numbers[i][0], 1);
+            } else {
+                home.put(numbers[i][0], home.get(numbers[i][0]) + 1);
+            }
 
+            if (company.get(numbers[i][1]) == null) {
+                company.put(numbers[i][1], 1);
+            } else {
+                company.put(numbers[i][1], company.get(numbers[i][1]) + 1);
+            }
 
         }
+
+        System.out.println(home);
+        System.out.println(company);
 
         return answer;
     }
@@ -25,7 +38,7 @@ public class Test2 {
         int a = 2;
         int b = 3;
         int[][] numbers = {{1, 1}, {1, 2}, {2, 3}};
-        System.out.println(sol.solution(a, b, numbers));
+        //System.out.println(sol.solution(a, b, numbers));
 
         int a2 = 5;
         int b2 = 5;
