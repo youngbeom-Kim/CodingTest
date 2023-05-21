@@ -3,6 +3,9 @@ package level01;
 public class Q63 {
     public int solution(int k, int[][] dungeons) {
         int answer = -1;
+
+        //완전 탐색
+
         return answer;
     }
 
