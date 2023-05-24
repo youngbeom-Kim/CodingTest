@@ -1,12 +1,28 @@
 package level02;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 //프로그래머스 > Level 02 > 타겟 넘버
 public class Q25 {
+    public int solution2(int[] scoville, int K) {
+        int answer = 0;
+
+        PriorityQueue<Integer> queue = Arrays.stream(scoville).boxed().collect(Collectors.toCollection(PriorityQueue::new));
+
+        while (queue.peek() < K && queue.size() > 1) {
+            int sum = 0;
+            sum = queue.poll() + (queue.poll() * 2);
+            queue.add(sum);
+            answer++;
+        }
+
+        if (queue.peek() < K) {
+            return -1;
+        }
+
+        return answer;
+    }
 
     //런타임 에러
     public int solution(int[] scoville, int K) {
@@ -46,7 +62,7 @@ public class Q25 {
 
         int[] scoville = {1, 2, 3, 9, 10, 12};
         int K = 7;
-        System.out.println(sol.solution(scoville, K));
+        System.out.println(sol.solution2(scoville, K));
 
     }
 }
