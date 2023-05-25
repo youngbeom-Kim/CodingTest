@@ -7,7 +7,9 @@ public class Q26 {
     public int[] solution(int[] prices) {
         int[] answer = {};
 
+        for (int i = 0; i < prices.length; i++) {
 
+        }
 
         return answer;
     }
