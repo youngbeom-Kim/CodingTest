@@ -5,6 +5,8 @@ public class Q27 {
     int solution(int[][] land) {
         int answer = 0;
 
+
+
         return answer;
     }
     public static void main(String[] args) {
