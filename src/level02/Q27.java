@@ -2,6 +2,13 @@ package level02;
 
 //프로그래머스 > Level 02 > 땅따먹기
 public class Q27 {
+    int solution2(int[][] land) {
+        int answer = 0;
+
+
+
+        return answer;
+    }
     int solution(int[][] land) {
         int answer = 0;
 
