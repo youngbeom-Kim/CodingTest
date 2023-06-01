@@ -7,6 +7,7 @@ public class Q27 {
 
 
 
+
         return answer;
     }
     int solution(int[][] land) {
