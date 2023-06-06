@@ -6,6 +6,9 @@ import java.util.Arrays;
 public class Q28 {
     public int[] solution(int[] fees, String[] records) {
         int[] answer = {};
+
+
+
         return answer;
     }
     public static void main(String[] args) {
