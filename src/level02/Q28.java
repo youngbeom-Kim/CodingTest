@@ -8,7 +8,6 @@ public class Q28 {
         int[] answer = {};
 
 
-
         return answer;
     }
     public static void main(String[] args) {
