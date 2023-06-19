@@ -1,13 +1,63 @@
 package level02;
 
-import java.util.Arrays;
+import java.util.*;
 
 //프로그래머스 > Level 02 > 주차 요금 계산
 public class Q28 {
     public int[] solution(int[] fees, String[] records) {
-        int[] answer = {};
 
+        ArrayList<String> number = new ArrayList();
+        ArrayList<Integer> time = new ArrayList<>();
+        HashMap<String, Integer> map = new HashMap<>();
 
+        for (int i = 0; i < records.length; i++) {
+            int record = (Integer.parseInt(records[i].split(" ")[0].split(":")[0]) * 60)
+                        + (Integer.parseInt(records[i].split(" ")[0].split(":")[1]));
+            String num = records[i].split(" ")[1];
+
+            if (number.contains(num)) {
+                if (map.containsKey(num)) {
+                    map.put(num, (map.get(num) + (record - time.get(number.indexOf(num)))));
+                } else {
+                    map.put(num, record - time.get(number.indexOf(num)));
+                }
+                time.remove(number.indexOf(num));
+                number.remove(number.indexOf(num));
+            } else {
+                number.add(num);
+                time.add(record);
+            }
+        }
+
+        if (!number.isEmpty()) {
+            for (int i = 0; i < number.size(); i++) {
+                if (map.containsKey(number.get(i))) {
+                    map.put(number.get(i), (map.get(number.get(i))) + (1439 - time.get(i)));
+                } else {
+                    map.put(number.get(i), 1439 - time.get(i));
+                }
+            }
+        }
+
+        List<String> list = new ArrayList<>(map.keySet());
+
+        Collections.sort(list);
+
+        int[] answer = new int[list.size()];
+
+        int cnt = 0;
+
+        System.out.println((int) Math.ceil((double) (334 - 180) / 10));
+
+        for (String key : list) {
+            int value = map.get(key);
+            if (value < fees[0]) {
+                answer[cnt] = fees[1];
+            } else {
+                answer[cnt] = fees[1] + ((int) Math.ceil((double) (value - fees[0]) / fees[2])) * fees[3];
+            }
+            cnt++;
+        }
 
         return answer;
     }
