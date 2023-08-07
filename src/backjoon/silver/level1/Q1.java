@@ -6,11 +6,30 @@ import java.util.Scanner;
 public class Q1 {
     public static void main(String[] args) {
 
-        Scanner scan = new Scanner(System.in);
+        Scanner in = new Scanner(System.in);
 
-        int num = scan.nextInt();
+        int in_num = in.nextInt();
 
-        System.out.println(num);
+        int cross_num = 1;
+        int stack_num = 0;
+
+        while (true) {
+            stack_num += cross_num;
+            if (stack_num > in_num) {
+                stack_num -= cross_num;
+                break;
+            }
+            cross_num += 1;
+        }
+
+        cross_num += 1;
+        int dif_num = in_num - stack_num;
+
+        if (cross_num % 2 == 0) {
+            System.out.println(dif_num + "/" + (cross_num - dif_num));
+        } else {
+            System.out.println((cross_num - dif_num) + "/" + dif_num);
+        }
 
     }
 }
