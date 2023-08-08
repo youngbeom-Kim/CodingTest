@@ -14,21 +14,24 @@ public class Q1 {
         int stack_num = 0;
 
         while (true) {
-            stack_num += cross_num;
-            if (stack_num > in_num) {
-                stack_num -= cross_num;
-                break;
+
+            if (in_num <= cross_num + stack_num) {
+
+                int dif_num = in_num - stack_num;
+
+                if (cross_num % 2 == 0) {
+                    System.out.println(dif_num + "/" + (cross_num - (dif_num - 1)));
+                    break;
+                } else {
+                    System.out.println((cross_num - (dif_num - 1)) + "/" + dif_num);
+                    break;
+                }
+
+            } else {
+                stack_num += cross_num;
+                cross_num++;
             }
-            cross_num += 1;
-        }
 
-        cross_num += 1;
-        int dif_num = in_num - stack_num;
-
-        if (cross_num % 2 == 0) {
-            System.out.println(dif_num + "/" + (cross_num - dif_num));
-        } else {
-            System.out.println((cross_num - dif_num) + "/" + dif_num);
         }
 
     }
