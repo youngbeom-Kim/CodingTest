@@ -28,8 +28,10 @@ public class Q1 {
                 }
 
             } else {
+
                 stack_num += cross_num;
                 cross_num++;
+
             }
 
         }
