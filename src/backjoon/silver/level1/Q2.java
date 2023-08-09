@@ -1,8 +1,8 @@
 package backjoon.silver.level1;
 
-import java.util.Iterator;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
-import java.util.TreeSet;
 
 //백준 > 실버5 > 수 정렬하기2
 public class Q2 {
@@ -12,17 +12,16 @@ public class Q2 {
 
         int max = in.nextInt();
 
-        TreeSet<Integer> set = new TreeSet<>();
+        ArrayList<Integer> list = new ArrayList<>();
 
-        while (set.size() < max) {
-            int num = in.nextInt();
-            set.add(num);
+        while (list.size() < max) {
+            list.add(in.nextInt());
         }
 
-        Iterator iter = set.iterator();
-        while (iter.hasNext()) {
-            System.out.println(iter.next());
-        }
+        Collections.sort(list);
 
+        for (int i = 0; i < list.size(); i++) {
+            System.out.println(list.get(i));
+        }
     }
 }
