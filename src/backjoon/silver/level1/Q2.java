@@ -9,6 +9,7 @@ public class Q2 {
     public static void main(String[] args) {
 
         Scanner in = new Scanner(System.in);
+        StringBuilder sb = new StringBuilder();
 
         int max = in.nextInt();
 
@@ -20,8 +21,10 @@ public class Q2 {
 
         Collections.sort(list);
 
-        for (int i = 0; i < list.size(); i++) {
-            System.out.println(list.get(i));
+        for (int num : list) {
+            sb.append(num).append('\n');
         }
+        System.out.println(sb);
+
     }
 }
