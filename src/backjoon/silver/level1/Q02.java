@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.Scanner;
 
 //백준 > 실버5 > 수 정렬하기2
-public class Q2 {
+public class Q02 {
     public static void main(String[] args) {
 
         Scanner in = new Scanner(System.in);
