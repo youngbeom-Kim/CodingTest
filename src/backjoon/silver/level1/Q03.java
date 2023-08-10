@@ -36,7 +36,6 @@ public class Q03 {
                 }
             }
 
-
             if (self_num <= numbers.length) {
                 answer[self_num - 1] = 0;
             }
