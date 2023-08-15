@@ -29,5 +29,6 @@ public class Q04 {
         for (int i = 0; i < num; i++) {
             System.out.println(arr[i][0] + " " + arr[i][1]);
         }
+
     }
 }
