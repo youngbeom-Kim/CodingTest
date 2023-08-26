@@ -8,27 +8,17 @@ public class Q01_2839 {
 
         Scanner in = new Scanner(System.in);
 
-        int[] sugar = {5, 3};
-
         int N = in.nextInt();
-        int sCnt = 0;
-        int sNum = 0;
 
-        for (int i = 0; i < sugar.length; i++) {
-            sNum = N / sugar[i];
-            sCnt += sNum;
-            N -= sNum * sugar[i];
-
-            if (N == 0) {
-                break;
-            }
+        if (N == 4 || N == 7) {
+            System.out.println(-1);
+        } else if (N % 5 == 0) {
+            System.out.println(N / 5);
+        } else if (N % 5 == 1 || N % 5 == 3) {
+            System.out.println((N / 5) + 1);
+        } else if (N % 5 == 2 || N % 5 == 4) {
+            System.out.println((N / 5 )+ 2);
         }
-
-        if (N != 0) {
-            sCnt = -1;
-        }
-
-        System.out.println(sCnt);
 
     }
 }
