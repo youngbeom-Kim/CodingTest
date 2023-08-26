@@ -1,6 +1,5 @@
 package backjoon.silver.level1;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 //백준 > 실버5 > 창문 닫기 (13909번)
@@ -11,8 +10,6 @@ public class Q10 {
 
         int num = in.nextInt();
         int cnt = 0;
-
-        ArrayList<Integer> list = new ArrayList<>();
 
         for (int i = 1; i * i <= num; i++) {
             cnt++;
