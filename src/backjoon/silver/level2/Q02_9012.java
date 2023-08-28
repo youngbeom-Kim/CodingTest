@@ -8,12 +8,26 @@ public class Q02_9012 {
 
         Scanner in = new Scanner(System.in);
 
-        int num = in.nextInt();
+        int T = in.nextInt();
 
-        String[] arr = new String[num];
+        String[] answers = new String[T];
 
-        for (int i = 0; i < num; i++) {
-            arr[i] = in.nextLine();
+        for (int i = 0; i < T; i++) {
+            String VPS = in.next();
+            String[] arr = VPS.split("");
+            int cnt = 0;
+            for (String paren : arr) {
+                cnt += paren.equals("(") ? 1 : -1;
+            }
+            if (cnt == 0) {
+                answers[i] = "YES";
+            } else {
+                answers[i] = "NO";
+            }
+        }
+
+        for (String answer : answers) {
+            System.out.println(answer);
         }
 
     }
