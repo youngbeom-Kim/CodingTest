@@ -13,10 +13,6 @@ public class Q02_9012 {
 
         String[] answers = new String[T];
 
-        for (String answer : answers) {
-            System.out.println(answer);
-        }
-
         for (int i = 0; i < T; i++) {
             Stack<Character> stack = new Stack<>();
             String paren = in.next();
@@ -35,7 +31,7 @@ public class Q02_9012 {
 
             }
 
-            if (stack.empty()) {
+            if (stack.empty() && answers[i] == null) {
                 answers[i] = "YES";
             } else {
                 answers[i] = "NO";
