@@ -28,9 +28,12 @@ public class Q03_11047 {
                 if (min > data && data > 0) {
                     min = data;
                 } else {
-                    i--;
                     break;
                 }
+            }
+
+            if (i != 0) {
+                i--;
             }
 
             sum += min;
