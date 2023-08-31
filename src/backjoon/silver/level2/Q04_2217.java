@@ -1,5 +1,7 @@
 package backjoon.silver.level2;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Scanner;
 
 //백준 > 실버4 > 로프 (2217번)
@@ -10,19 +12,27 @@ public class Q04_2217 {
 
         int N = in.nextInt();
 
+        Integer[] ropes = new Integer[N];
+
         int min = 10000;
         int weight = 0;
 
-        for (int i = 1; i <= N; i++) {
+        for (int i = 0; i < N; i++) {
             int rope = in.nextInt();
-            if (min > rope) {
-                min = rope;
+            ropes[i] = rope;
+        }
+
+        Arrays.sort(ropes, Collections.reverseOrder());
+
+        for (int i = 1; i <= ropes.length; i++) {
+            if (min > ropes[i - 1]) {
+                min = ropes[i - 1];
             }
             if (weight < min * i) {
                 weight = min * i;
             }
-            if (weight < rope) {
-                weight = rope;
+            if (weight < ropes[i - 1]) {
+                weight = ropes[i - 1];
             }
         }
 
