@@ -8,15 +8,17 @@ public class Q06_1748 {
 
         Scanner in = new Scanner(System.in);
 
-        StringBuilder sb = new StringBuilder();
-
         int N = in.nextInt();
 
-        for (int i = 1; i <= N; i++) {
-            sb.append("").append(i);
+        String str = "";
+
+        int digit = (int) (Math.log10(N) + 1);
+
+        for (int i = digit - 1; i > 0; i--) {
+            str += "" + i;
         }
 
-        System.out.println(sb.length());
+        System.out.println((int) ((9 * Integer.parseInt(str)) + (digit * (N - Math.pow(10, digit - 1) + 1))));
 
     }
 }
