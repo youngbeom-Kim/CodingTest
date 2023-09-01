@@ -12,13 +12,20 @@ public class Q06_1748 {
 
         String str = "";
 
-        int digit = (int) (Math.log10(N) + 1);
+        if (N < 10) {
+            System.out.println(N);
+        } else {
+            int digit = (int) (Math.log10(N) + 1);
 
-        for (int i = digit - 1; i > 0; i--) {
-            str += "" + i;
+            for (int i = digit - 1; i > 0; i--) {
+                str += "" + i;
+            }
+
+            int front = (9 * Integer.parseInt(str));
+            int back = (int) (digit * (N - Math.pow(10, digit - 1) + 1));
+
+            System.out.println(front + back);
         }
-
-        System.out.println((int) ((9 * Integer.parseInt(str)) + (digit * (N - Math.pow(10, digit - 1) + 1))));
 
     }
 }
