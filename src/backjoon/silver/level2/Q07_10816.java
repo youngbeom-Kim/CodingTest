@@ -42,6 +42,5 @@ public class Q07_10816 {
             }
             System.out.print(" ");
         }
-
     }
 }
