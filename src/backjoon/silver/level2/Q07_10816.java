@@ -3,7 +3,7 @@ package backjoon.silver.level2;
 import java.util.HashMap;
 import java.util.Scanner;
 
-//백준 > 실버4 > 숫자 카드 2 (10816번)
+//백준 > 실버4 > 숫자 카드 2 (10816번) (잠시 보류)
 public class Q07_10816 {
     public static void main(String[] args) {
 
