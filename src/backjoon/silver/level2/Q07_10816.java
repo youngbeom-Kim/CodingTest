@@ -1,6 +1,6 @@
 package backjoon.silver.level2;
 
-import java.util.HashMap;
+import java.util.Arrays;
 import java.util.Scanner;
 
 //백준 > 실버4 > 숫자 카드 2 (10816번) (잠시 보류)
@@ -11,36 +11,69 @@ public class Q07_10816 {
 
         int N = in.nextInt();
 
-        HashMap<Integer, Integer> map = new HashMap<>();
+        int[] arr = new int[N];
 
         for (int i = 0; i < N; i++) {
-            int having = in.nextInt();
-            if (map.get(having) == null) {
-                map.put(having, 1);
-            } else {
-                map.put(having, map.get(having) + 1);
-            }
+            int data = in.nextInt();
+            arr[i] = data;
         }
+
+        Arrays.sort(arr);
 
         int M = in.nextInt();
 
-        int[] arr = new int[M];
+        StringBuilder sb = new StringBuilder();
 
         for (int i = 0; i < M; i++) {
-            int check = in.nextInt();
-            if (map.get(check) == null) {
-                arr[i] = 0;
-            } else {
-                arr[i] = map.get(check);
+            int answer = in.nextInt();
+
+            sb.append(upperBound(arr, answer) - lowerBound(arr, answer));
+            if (i != M - 1) {
+                sb.append(' ');
             }
         }
 
-        for (int i = 0; i < arr.length; i++) {
-            System.out.print(arr[i]);
-            if (i == arr.length - 1) {
-                break;
-            }
-            System.out.print(" ");
-        }
+        System.out.println(sb);
+
     }
+
+    private static int lowerBound(int[] arr, int key) {
+
+        int min = 0;
+        int max = arr.length;
+
+        while (min < max) {
+
+            int mid = (min + max) / 2;
+
+            if (key <= arr[mid]) {
+                max = mid;
+            } else {
+                min = mid + 1;
+            }
+        }
+
+        return min;
+
+    }
+
+    private static int upperBound(int[] arr, int key) {
+
+        int min = 0;
+        int max = arr.length;
+
+        while (min < max) {
+
+            int mid = (min + max) / 2;
+
+            if (key < arr[mid]) {
+                max = mid;
+            } else {
+                min = mid + 1;
+            }
+        }
+
+        return min;
+    }
+
 }
