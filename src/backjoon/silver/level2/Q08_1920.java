@@ -1,32 +1,31 @@
 package backjoon.silver.level2;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.Arrays;
+import java.util.Scanner;
 
 //백준 > 실버 4 > 수 찿기 (1920번)
 public class Q08_1920 {
     public static void main(String[] args) throws IOException {
 
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        Scanner in = new Scanner(System.in);
 
-        int data = Integer.parseInt(br.readLine());
+        int N = in.nextInt();
 
-        int[] arr = new int[data];
+        int[] arr = new int[N];
 
-        for (int i = 0; i < data; i++) {
-            arr[i] = Integer.parseInt(br.readLine());
+        for (int i = 0; i < N; i++) {
+            arr[i] = in.nextInt();
         }
 
         Arrays.sort(arr);
 
-        int value = Integer.parseInt(br.readLine());
+        int M = in.nextInt();
 
-        int[] answers = new int[value];
+        int[] answers = new int[M];
 
-        for (int i = 0; i < value; i++) {
-            int answer = Integer.parseInt(br.readLine());
+        for (int i = 0; i < M; i++) {
+            int answer = in.nextInt();
 
             answers[i] = searchAnswer(answer, arr);
 
