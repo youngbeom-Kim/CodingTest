@@ -11,6 +11,5 @@ public class Q01_1463 {
         int N = in.nextInt();
 
         int[] arr = new int[N + 1];
-
     }
 }
