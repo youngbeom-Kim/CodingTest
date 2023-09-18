@@ -19,6 +19,7 @@ public class Q01_1463 {
         arr[0] = arr[1] = 0;
 
         if (M == 0) {
+            // 100000 이상의 숫자에서 오류
             System.out.println(recursion(N));
         } else {
             System.out.println(recursion(N, 0));
@@ -38,7 +39,9 @@ public class Q01_1463 {
     private static int recursion(int N) {
 
         if (arr[N] == null) {
-            if (N % 3 == 0) {
+            if (N % 6 == 0) {
+                arr[N] = Math.min(recursion(N - 1), Math.min(recursion(N / 3), recursion(N / 2)));
+            } else if (N % 3 == 0) {
                 arr[N] = Math.min(recursion(N / 3), recursion(N - 1)) + 1;
             } else if (N % 2 == 0) {
                 arr[N] = Math.min(recursion(N / 2), recursion(N - 1)) + 1;
