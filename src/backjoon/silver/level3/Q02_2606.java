@@ -32,6 +32,7 @@ public class Q02_2606 {
         for (int com : comList[i]) {
             if (virus[com] == 0) {
                 dfs(com);
+
             }
         }
 
