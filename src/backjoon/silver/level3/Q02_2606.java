@@ -15,8 +15,9 @@ public class Q02_2606 {
 
         virus = new int[com + 1];
         comList = new int[line + 1][2];
+        comList[0] = new int[]{0, 0};
 
-        for (int i = 0; i < line; i++) {
+        for (int i = 1; i <= line; i++) {
             comList[i][0] = in.nextInt();
             comList[i][1] = in.nextInt();
         }
@@ -32,7 +33,6 @@ public class Q02_2606 {
         for (int com : comList[i]) {
             if (virus[com] == 0) {
                 dfs(com);
-
             }
         }
 
