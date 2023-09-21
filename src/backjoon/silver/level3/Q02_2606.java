@@ -4,37 +4,42 @@ import java.util.Scanner;
 
 public class Q02_2606 {
 
-    static int[] virus;
+    static boolean[] virus;
     static int[][] comList;
+    static int com, line;
+    static int count = 0;
     public static void main(String[] args) {
 
         Scanner in = new Scanner(System.in);
 
-        int com = in.nextInt();
-        int line = in.nextInt();
+        com = in.nextInt();
+        line = in.nextInt();
 
-        virus = new int[com + 1];
-        comList = new int[line + 1][2];
-        comList[0] = new int[]{0, 0};
+        virus = new boolean[com + 1];
+        comList = new int[com + 1][com + 1];
 
-        for (int i = 1; i <= line; i++) {
-            comList[i][0] = in.nextInt();
-            comList[i][1] = in.nextInt();
+        for (int i = 0; i < line; i++) {
+            int a = in.nextInt();
+            int b = in.nextInt();
+            comList[a][b] = comList[b][a] = 1;
         }
 
-        dfs(1);
+        System.out.println(dfs(1));
 
     }
 
-    private static void dfs(int i) {
+    private static int dfs(int i) {
 
-        virus[i] = 1;
+        virus[i] = true;
 
-        for (int com : comList[i]) {
-            if (virus[com] == 0) {
-                dfs(com);
+        for (int j = 1; j <= com; j++) {
+            if (comList[i][j] == 1 && virus[j] == false) {
+                count++;
+                dfs(j);
             }
         }
+
+        return count;
 
     }
 }
