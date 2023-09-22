@@ -24,6 +24,7 @@ public class Q02_2606 {
             comList[a][b] = comList[b][a] = 1;
         }
 
+
         System.out.println(dfs(1));
 
     }
