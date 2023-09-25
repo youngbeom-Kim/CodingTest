@@ -2,7 +2,8 @@ package backjoon.silver.level3;
 
 import java.util.Scanner;
 
-public class Q02_2606 {
+//백준 > 실버3 > 바이러스
+public class Q02_2606R {
 
     static boolean[] virus;
     static int[][] comList;
@@ -23,6 +24,7 @@ public class Q02_2606 {
             int b = in.nextInt();
             comList[a][b] = comList[b][a] = 1;
         }
+
         System.out.println(dfs(1));
 
     }
@@ -42,3 +44,4 @@ public class Q02_2606 {
 
     }
 }
+
