@@ -5,6 +5,5 @@ public class Q04_15649 {
     public static void main(String[] args) {
 
 
-
     }
 }
