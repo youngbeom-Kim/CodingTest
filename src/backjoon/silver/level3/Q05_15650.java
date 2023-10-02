@@ -2,12 +2,9 @@ package backjoon.silver.level3;
 
 import java.util.Scanner;
 
-//백준 > 실버3 > N과 M(1) (15649번)
-public class Q04_15649R {
-
+public class Q05_15650 {
     static boolean[] visit;
     static int[] arr;
-
     public static void main(String[] args) {
 
         Scanner in = new Scanner(System.in);
@@ -15,8 +12,8 @@ public class Q04_15649R {
         int N = in.nextInt();
         int M = in.nextInt();
 
-        visit = new boolean[N];
         arr = new int[M];
+        visit = new boolean[N];
 
         bTrack(N, M, 0);
 
@@ -32,6 +29,7 @@ public class Q04_15649R {
             return;
         }
 
+
         for (int i = 0; i < N; i++) {
             if (!visit[i]) {
                 visit[i] = true;
@@ -42,4 +40,5 @@ public class Q04_15649R {
         }
 
     }
+
 }
