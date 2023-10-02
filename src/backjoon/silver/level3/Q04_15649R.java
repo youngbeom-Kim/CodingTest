@@ -32,7 +32,7 @@ public class Q04_15649R {
             return;
         }
 
-        for (int i = 0; i < M; i++) {
+        for (int i = 0; i < N; i++) {
             if (!visit[i]) {
                 visit[i] = true;
                 arr[depth] = i + 1;

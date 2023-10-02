@@ -12,8 +12,8 @@ public class Q05_15650 {
         int N = in.nextInt();
         int M = in.nextInt();
 
-        visit = new boolean[N];
         arr = new int[M];
+        visit = new boolean[N];
 
         bTrack(N, M, 0);
 
@@ -29,7 +29,8 @@ public class Q05_15650 {
             return;
         }
 
-        for (int i = 0; i < M; i++) {
+
+        for (int i = 0; i < N; i++) {
             if (!visit[i]) {
                 visit[i] = true;
                 arr[depth] = i + 1;
