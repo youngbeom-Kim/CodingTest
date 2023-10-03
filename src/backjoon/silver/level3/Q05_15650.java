@@ -3,23 +3,22 @@ package backjoon.silver.level3;
 import java.util.Scanner;
 
 public class Q05_15650 {
-    static boolean[] visit;
     static int[] arr;
+    static int N, M;
     public static void main(String[] args) {
 
         Scanner in = new Scanner(System.in);
 
-        int N = in.nextInt();
-        int M = in.nextInt();
+        N = in.nextInt();
+        M = in.nextInt();
 
         arr = new int[M];
-        visit = new boolean[N];
 
-        bTrack(N, M, 0);
+        bTrack(1, 0);
 
     }
 
-    private static void bTrack(int N, int M, int depth) {
+    private static void bTrack(int a, int depth) {
 
         if (depth == M) {
             for (int num : arr) {
@@ -30,13 +29,9 @@ public class Q05_15650 {
         }
 
 
-        for (int i = 0; i < N; i++) {
-            if (!visit[i]) {
-                visit[i] = true;
-                arr[depth] = i + 1;
-                bTrack(N, M, depth + 1);
-                visit[i] = false;
-            }
+        for (int i = a; i < N; i++) {
+            arr[depth] = i;
+            bTrack(i + 1,  depth + 1);
         }
 
     }
