@@ -11,7 +11,6 @@ public class Q07_15651R {
 
         Scanner in = new Scanner(System.in);
 
-
         N = in.nextInt();
         M = in.nextInt();
 
