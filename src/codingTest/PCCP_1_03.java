@@ -24,7 +24,6 @@ public class PCCP_1_03 {
         if (n == 2) return "Rr";
         if (p > cnt / 4 && p <= cnt / 2) return recur(n - 1, p - cnt / 4);
         return recur(n - 1, p - cnt / 2);
-
     }
 
     public static void main(String[] args) {
