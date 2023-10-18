@@ -15,8 +15,10 @@ public class problem03 {
 
     private static int solution(int number) {
 
+        //정답
         int cnt = 0;
 
+        //String으로 바꾸고 char로 바꾼 뒤, 369가 있나 체크, 있을 경우 cnt +1
         for (int i = 1; i <= number; i++) {
             String s = String.valueOf(i);
             for (int j = 0; j < s.length(); j++) {

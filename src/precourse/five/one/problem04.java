@@ -17,6 +17,8 @@ public class problem04 {
 
         String s = "";
 
+        //A = 65, Z = 90, a = 97, z = 122
+        //I = 73, R = 82 (ex > 65(A) + (90(Z) - 73(I)) = 65 + 17 = 82(R))
         for (int i = 0; i < word.length(); i++) {
             char c = word.charAt(i);
             if (c >= 'A' && c <= 'Z') c = (char) ('A' + ('Z' - c));
