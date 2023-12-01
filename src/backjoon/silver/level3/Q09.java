@@ -34,7 +34,7 @@ public class Q09 {
             int result = 1;
 
             for (int value : clothes.values()) {
-                result *= value;
+                result *= value + 1;
             }
 
             System.out.println(result - 1);
