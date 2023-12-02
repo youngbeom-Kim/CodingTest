@@ -40,6 +40,5 @@ public class Q09 {
             System.out.println(result - 1);
 
         }
-
     }
 }
