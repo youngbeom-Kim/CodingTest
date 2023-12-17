@@ -26,6 +26,7 @@ public class Q01_1012 {
 
         arr = new int[N][M];
 
+
         for (int i = 0; i < K; i++) {
             st = new StringTokenizer(br.readLine(), " ");
             int X = Integer.parseInt(st.nextToken());
