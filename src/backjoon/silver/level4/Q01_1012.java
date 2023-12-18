@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
+//백준 > 실버2 > 유기농 배추 (1012번)
 public class Q01_1012 {
 
     static int[][] arr;
