@@ -67,7 +67,7 @@ public class Q01_1012 {
 
     private static void xCheck(int n, int m) {
 
-        if (n - 1 > 0) {
+        if (n - 1 >= 0) {
             if (arr[n - 1][m] == 1) {
                 check(n - 1, m);
             }
@@ -83,7 +83,7 @@ public class Q01_1012 {
 
     private static void yCheck(int n, int m) {
 
-        if (m - 1 > 0) {
+        if (m - 1 >= 0) {
             if (arr[n][m - 1] == 1) {
                 check(n, m - 1);
             }
