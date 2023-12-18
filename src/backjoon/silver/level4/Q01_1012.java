@@ -17,79 +17,82 @@ public class Q01_1012 {
 
         int T = Integer.parseInt(br.readLine());
 
-        StringTokenizer st = new StringTokenizer(br.readLine(), " ");
-
-        N = Integer.parseInt(st.nextToken());
-        M = Integer.parseInt(st.nextToken());
-        int K = Integer.parseInt(st.nextToken());
         StringBuilder sb = new StringBuilder();
 
-        arr = new int[N][M];
+        for (int i = 0; i < T; i++) {
 
+            StringTokenizer st = new StringTokenizer(br.readLine(), " ");
 
-        for (int i = 0; i < K; i++) {
-            st = new StringTokenizer(br.readLine(), " ");
-            int X = Integer.parseInt(st.nextToken());
-            int Y = Integer.parseInt(st.nextToken());
-            arr[X][Y] = 1;
-        }
+            N = Integer.parseInt(st.nextToken());
+            M = Integer.parseInt(st.nextToken());
+            int K = Integer.parseInt(st.nextToken());
 
-        while (T-- > 0) {
+            arr = new int[N][M];
+
+            for (int j = 0; j < K; j++) {
+                st = new StringTokenizer(br.readLine(), " ");
+                int X = Integer.parseInt(st.nextToken());
+                int Y = Integer.parseInt(st.nextToken());
+                arr[X][Y] = 1;
+            }
 
             int cnt = 0;
 
-            for (int i = 0; i < N; i++) {
-                for (int j = 0; j < M; j++) {
+            for (int n = 0; n < N; n++) {
+                for (int m = 0; m < M; m++) {
 
-                    if (arr[i][j] == 1) {
-                        check(i, j);
+                    if (arr[n][m] == 1) {
+                        check(n, m);
                         cnt++;
                     }
 
                 }
             }
 
-            System.out.println(cnt);
+            sb.append(cnt).append("\n");
+        }
 
+        System.out.println(sb);
+
+    }
+
+    private static void check(int n, int m) {
+
+        arr[n][m] = 0;
+
+        xCheck(n, m);
+        yCheck(n, m);
+
+    }
+
+    private static void xCheck(int n, int m) {
+
+        if (n - 1 > 0) {
+            if (arr[n - 1][m] == 1) {
+                check(n - 1, m);
+            }
+        }
+
+        if (n + 1 < N) {
+            if (arr[n + 1][m] == 1) {
+                check(n + 1, m);
+            }
         }
 
     }
 
-    private static void check(int i, int j) {
+    private static void yCheck(int n, int m) {
 
-        arr[i][j] = 0;
-
-        xCheck(i, j);
-        yCheck(i, j);
-
-    }
-
-    private static void xCheck(int i, int j) {
-
-        if (i - 1 < 0 || i + 1 > N) {
-            return;
+        if (m - 1 > 0) {
+            if (arr[n][m - 1] == 1) {
+                check(n, m - 1);
+            }
         }
 
-        if (arr[i - 1][j] == 1) {
-            check(i - 1, j);
-        }
-        if (arr[i + 1][j] == 1) {
-            check(i + 1, j);
-        }
-
-    }
-
-    private static void yCheck(int i, int j) {
-
-        if (j - 1 < 0 || j + 1 > M) {
-            return;
-        }
-
-        if (arr[i][j - 1] == 1) {
-            check(i, j - 1);
-        }
-        if (arr[i][j + 1] == 1) {
-            check(i, j + 1);
+        if (m + 1 < M) {
+            if (arr[n][m + 1] == 1) {
+                check(n, m + 1);
+            }
         }
 
     }
