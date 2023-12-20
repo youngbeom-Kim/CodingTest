@@ -22,6 +22,7 @@ public class Q02_11724 {
         node = new int[N][N];
         visited = new boolean[N];
 
+
         for (int i = 0; i < M; i++) {
             st = new StringTokenizer(br.readLine());
             int U = Integer.parseInt(st.nextToken()) - 1;
