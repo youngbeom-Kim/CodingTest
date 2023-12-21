@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+//백준 > 실버2 > 잃어버린 괄호(1541번)
 public class Q03_1541 {
     public static void main(String[] args) throws IOException {
 
@@ -11,7 +12,7 @@ public class Q03_1541 {
 
         String[] subtraction = br.readLine().split("-");
 
-        int result = 0;
+        int result = 111111;
 
         for (int i = 0; i < subtraction.length; i++) {
             int temp = 0;
@@ -22,7 +23,7 @@ public class Q03_1541 {
                 temp += Integer.parseInt(addition[j]);
             }
 
-            if (result == 0) {
+            if (result == 111111) {
                 result = temp;
             } else {
                 result -= temp;
