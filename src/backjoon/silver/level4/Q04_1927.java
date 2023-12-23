@@ -29,6 +29,5 @@ public class Q04_1927 {
         }
 
         System.out.print(sb);
-
     }
 }
