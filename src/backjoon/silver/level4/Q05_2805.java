@@ -17,6 +17,7 @@ public class Q05_2805 {
 
         for (int i = 0; i < N; i++) {
 
+
         }
 
     }
