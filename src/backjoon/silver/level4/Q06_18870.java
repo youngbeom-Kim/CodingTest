@@ -43,6 +43,5 @@ public class Q06_18870 {
         sb.deleteCharAt(sb.length() - 1);
 
         System.out.println(sb);
-
     }
 }
