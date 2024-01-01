@@ -27,6 +27,7 @@ public class Q06_18870 {
         Arrays.sort(sorted);
 
         int num = 0;
+
         for (int i = 0; i < N; i++) {
             if (!map.containsKey(sorted[i])) {
                 map.put(sorted[i], num);
