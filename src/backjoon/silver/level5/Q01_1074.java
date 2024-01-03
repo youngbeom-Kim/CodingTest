@@ -10,6 +10,7 @@ public class Q01_1074 {
     private static int x = 0;
     private static int y = 0;
     private static int result = 0;
+
     public static void main(String[] args) throws IOException {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -19,24 +20,24 @@ public class Q01_1074 {
         int r = Integer.parseInt(st.nextToken());
         int c = Integer.parseInt(st.nextToken());
 
-        Z(r, c, (int)Math.pow(2, N));
+        Z(r, c, (int) Math.pow(2, N));
 
         System.out.println(result);
     }
 
-    private static void Z(int r, int c, int n) {
+    private static void Z(int row, int col, int n) {
 
         n /= 2;
 
-        if (r < x + n && c < y + n) {
+        if (row < x + n && col < y + n) {
             result += (n * n * 0);
-        } else if (r < x + n && c >= y + n) {
+        } else if (row < x + n && col >= y + n) {
             y += n;
             result += (n * n * 1);
-        } else if (r >= x + n && c < y + n) {
+        } else if (row >= x + n && col < y + n) {
             x += n;
             result += (n * n * 2);
-        } else if (r >= x + n && c >= y + n) {
+        } else if (row >= x + n && col >= y + n) {
             x += n;
             y += n;
             result += (n * n * 3);
@@ -44,6 +45,7 @@ public class Q01_1074 {
 
         if (n == 1) return;
 
-        Z(r, c, n);
+        Z(row, col, n);
+
     }
 }
