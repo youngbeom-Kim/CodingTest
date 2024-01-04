@@ -46,6 +46,5 @@ public class Q01_1074 {
         if (n == 1) return;
 
         Z(row, col, n);
-
     }
 }
