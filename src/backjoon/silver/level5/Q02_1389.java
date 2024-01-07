@@ -57,6 +57,5 @@ public class Q02_1389 {
         }
 
         System.out.println(data);
-
     }
 }
