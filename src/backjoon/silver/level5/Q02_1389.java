@@ -17,7 +17,7 @@ public class Q02_1389 {
 
         int[][] arr = new int[N + 1][N + 1];
 
-        final int INF = 99999;
+        final int INF = 10;
 
         for (int i = 1; i <= N; i++) {
             for (int j = 1; j <= N; j++) {
