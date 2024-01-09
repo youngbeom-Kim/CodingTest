@@ -9,8 +9,9 @@ import java.util.StringTokenizer;
 
 //백준 > 실버1 > 숨바꼭질(1697번)
 public class Q03_1697 {
-    private static Queue<Integer> queue;
-    private static int result = -1;
+    private static Queue<Integer> queue1, queue2;
+    private static boolean[] visited = new boolean[400001];
+    private static int result = 0;
     private static int K;
     public static void main(String[] args) throws IOException {
 
@@ -20,40 +21,50 @@ public class Q03_1697 {
         int N = Integer.parseInt(st.nextToken());
         K = Integer.parseInt(st.nextToken());
 
-        queue = new LinkedList<>();
+        queue1 = new LinkedList<>();
+        queue2 = new LinkedList<>();
 
-        queue.add(N);
+        queue1.add(N);
 
-        bfs(queue.peek());
+        bfs(queue1.peek());
 
         System.out.println(result);
     }
 
-    private static void bfs(int N) {
+    private static void bfs(int num) {
 
-        int num = queue.poll();
+        if (result % 2 == 0) {
+            num = queue1.poll();
+        } else {
+            num = queue2.poll();
+        }
 
         if (num != K) {
-            queue.add(num - 1);
-            queue.add(num + 1);
-            queue.add(num * 2);
-        } else {
-            if (result != -1) {
-                int cnt = 1;
-                while (result > Math.pow(3, cnt)) {
-                    if (result > Math.pow(3, cnt)) {
-                        result -= Math.pow(3, cnt);
-                    }
-                    cnt++;
+            if (visited[num] == false) {
+                if (result % 2 == 0) {
+                    if (num - 1 > 0) queue2.add(num - 1);
+                    queue2.add(num + 1);
+                    queue2.add(num * 2);
+                } else {
+                    if (num - 1 > 0) queue1.add(num - 1);
+                    queue1.add(num + 1);
+                    queue1.add(num * 2);
                 }
-                result = cnt;
-            } else {
-                result = 0;
             }
+        } else {
             return;
         }
 
-        result++;
-        bfs(queue.peek());
+        visited[num] = true;
+
+        if (queue1.isEmpty() || queue2.isEmpty()) {
+            result++;
+        }
+
+        if (result % 2 == 0) {
+            bfs(queue1.peek());
+        } else {
+            bfs(queue2.peek());
+        }
     }
 }
