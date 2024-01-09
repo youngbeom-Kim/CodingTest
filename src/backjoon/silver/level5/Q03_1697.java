@@ -9,62 +9,58 @@ import java.util.StringTokenizer;
 
 //백준 > 실버1 > 숨바꼭질(1697번)
 public class Q03_1697 {
-    private static Queue<Integer> queue1, queue2;
-    private static boolean[] visited = new boolean[400001];
-    private static int result = 0;
+    private static int[] visited = new int[100001];
+    private static int N;
     private static int K;
     public static void main(String[] args) throws IOException {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
 
-        int N = Integer.parseInt(st.nextToken());
+        N = Integer.parseInt(st.nextToken());
         K = Integer.parseInt(st.nextToken());
 
-        queue1 = new LinkedList<>();
-        queue2 = new LinkedList<>();
-
-        queue1.add(N);
-
-        bfs(queue1.peek());
-
-        System.out.println(result);
+        if (N == K) {
+            System.out.println(0);
+        } else {
+            bfs(N);
+        }
     }
 
-    private static void bfs(int num) {
+    private static void bfs(int N) {
 
-        if (result % 2 == 0) {
-            num = queue1.poll();
-        } else {
-            num = queue2.poll();
-        }
+        Queue<Integer> queue = new LinkedList<>();
 
-        if (num != K) {
-            if (visited[num] == false) {
-                if (result % 2 == 0) {
-                    if (num - 1 > 0) queue2.add(num - 1);
-                    queue2.add(num + 1);
-                    queue2.add(num * 2);
+        queue.add(N);
+
+        visited[N] = 1;
+
+        while(!queue.isEmpty()) {
+            int num = queue.poll();
+
+            for (int i = 0; i < 3; i++) {
+                int next;
+
+                if (i == 0) {
+                    next = num + 1;
+                } else if (i == 1) {
+                    next = num - 1;
                 } else {
-                    if (num - 1 > 0) queue1.add(num - 1);
-                    queue1.add(num + 1);
-                    queue1.add(num * 2);
+                    next = num * 2;
+                }
+
+                if (next == K) {
+                    System.out.println(visited[num]);
+                    return;
+                }
+
+                if (num >= 0 && num < visited.length && visited[next] == 0) {
+                    queue.add(next);
+                    visited[next] = visited[num] + 1;
                 }
             }
-        } else {
-            return;
         }
 
-        visited[num] = true;
 
-        if (queue1.isEmpty() || queue2.isEmpty()) {
-            result++;
-        }
-
-        if (result % 2 == 0) {
-            bfs(queue1.peek());
-        } else {
-            bfs(queue2.peek());
-        }
     }
 }
