@@ -9,6 +9,5 @@ public class Q06_2667 {
         Scanner in = new Scanner(System.in);
 
         int N = in.nextInt();
-
     }
 }
