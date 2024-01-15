@@ -9,11 +9,12 @@ import java.util.StringTokenizer;
 
 //백준 > 실버1 > 미로 탐색(2178번)
 public class Q05_2178 {
+
     private static int[][] map;
     private static boolean[][] visited;
     private static int N, M;
-    private static int[] dx = {1, 0, -1, 0};
-    private static int[] dy = {0, 1, 0, -1};
+    private static int[] dx = {0, 1, 0, -1};
+    private static int[] dy = {1, 0, -1, 0};
     public static void main(String[] args) throws IOException {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -36,12 +37,14 @@ public class Q05_2178 {
 
         bfs(0, 0);
 
-        System.out.println(map[N -1][M - 1]);
+        System.out.println(map[N - 1][M - 1]);
+
     }
 
     private static void bfs(int x, int y) {
 
         Queue<int[]> queue = new LinkedList<>();
+
         queue.add(new int[] {x, y});
 
         while (!queue.isEmpty()) {
@@ -60,6 +63,8 @@ public class Q05_2178 {
                     visited[nextX][nextY] = true;
                 }
             }
+
         }
+
     }
 }
