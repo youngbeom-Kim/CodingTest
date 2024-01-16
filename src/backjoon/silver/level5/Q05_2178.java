@@ -63,7 +63,6 @@ public class Q05_2178 {
                     visited[nextX][nextY] = true;
                 }
             }
-
         }
 
     }
