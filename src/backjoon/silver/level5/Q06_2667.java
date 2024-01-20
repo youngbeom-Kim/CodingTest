@@ -74,7 +74,6 @@ public class Q06_2667 {
                     }
 
                     complexCnt += cnt + "\n";
-
                 }
             }
         }
