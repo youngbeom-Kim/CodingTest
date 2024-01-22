@@ -3,13 +3,16 @@ package backjoon.silver.level5;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.Queue;
 
 public class Q06_2667 {
 
     private static int[][] map;
-    private static int N;
+    private static int N, complex;
+    private static ArrayList<Integer> list = new ArrayList<>();
     private static int[] dx = {1, 0, -1, 0};
     private static int[] dy = {0, 1, 0, -1};
     private static StringBuilder sb = new StringBuilder();
@@ -31,23 +34,31 @@ public class Q06_2667 {
 
         bfs(0, 0);
 
+        sb.append(complex).append("\n");
+
+        Collections.sort(list);
+
+        for (int cnt : list) {
+            sb.append(cnt).append("\n");
+        }
+
+        sb.deleteCharAt(sb.length() - 1);
+
         System.out.println(sb);
+
     }
 
     private static void bfs(int x, int y) {
 
         Queue<int[]> queue = new LinkedList<>();
 
-        int complex = 0;
-
-        String complexCnt = "";
-
         for (int i = x; i < N; i++) {
             for (int j = y; j < N; j++) {
                 if (map[i][j] == 1) {
 
                     complex++;
-                    int cnt = 0;
+                    map[i][j] = 0;
+                    int complexCnt = 1;
 
                     queue.add(new int[] {i, j});
 
@@ -66,20 +77,18 @@ public class Q06_2667 {
                             if (map[nextX][nextY] == 1) {
                                 queue.add(new int[] {nextX, nextY});
                                 map[nextX][nextY] = 0;
-                                cnt++;
+                                complexCnt++;
                             }
 
                         }
 
                     }
 
-                    complexCnt += cnt + "\n";
+                    list.add(complexCnt);
 
                 }
             }
         }
-
-        sb.append(complex).append("\n").append(complexCnt);
 
     }
 }
