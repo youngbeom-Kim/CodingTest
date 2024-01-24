@@ -2,6 +2,7 @@ package backjoon.silver.level5;
 
 import java.util.Scanner;
 
+//백준 > 실버1 > IOIOI(5525번)
 public class Q07_5525 {
     public static void main(String[] args) {
 
@@ -9,34 +10,19 @@ public class Q07_5525 {
 
         int N = in.nextInt();
         int M = in.nextInt();
-        String P = in.next();
+        String[] P = in.next().split("");
 
-        String check = "";
+        int[] check = new int[M];
+        int cnt = 0;
 
-        for (int i = 0; i < N; i++) {
-            if (i == 0) {
-                check += "IOI";
-            } else {
-                check += "OI";
+        for (int i = 1; i < M - 1; i++) {
+            if (P[i].equals("O") && P[i + 1].equals("I")) {
+                check[i + 1] = check[i - 1] + 1;
+
+                if (check[i + 1] >= N && P[i - N * 2 + 1].equals("I")) cnt++;
             }
         }
 
-        int cnt = 0;
-
-        int index = 0;
-
-        while (index >= 0 && P.indexOf(check) >= 0) {
-
-            index = P.indexOf(check, index);
-
-            if (index >= 0) cnt++;
-            else break;
-
-            index = index + 2;
-
-        }
-
         System.out.println(cnt);
-
     }
 }
