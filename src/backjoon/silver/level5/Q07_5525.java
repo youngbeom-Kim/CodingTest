@@ -25,11 +25,14 @@ public class Q07_5525 {
 
         int index = 0;
 
-        while (index >= 0 && P.indexOf(check) > 0) {
+        while (index >= 0 && P.indexOf(check) >= 0) {
 
-            index = P.indexOf(check, index + 2);
+            index = P.indexOf(check, index);
 
-            if (index > 0) cnt++;
+            if (index >= 0) cnt++;
+            else break;
+
+            index = index + 2;
 
         }
 
