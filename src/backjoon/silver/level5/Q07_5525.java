@@ -10,16 +10,18 @@ public class Q07_5525 {
 
         int N = in.nextInt();
         int M = in.nextInt();
-        String[] P = in.next().split("");
+        char[] P = in.next().toCharArray();
 
         int[] check = new int[M];
         int cnt = 0;
 
         for (int i = 1; i < M - 1; i++) {
-            if (P[i].equals("O") && P[i + 1].equals("I")) {
+            if (P[i] == 'O' && P[i + 1] == 'I') {
                 check[i + 1] = check[i - 1] + 1;
 
-                if (check[i + 1] >= N && P[i - N * 2 + 1].equals("I")) cnt++;
+                if (P[i - 1] == 'I' && check[i + 1] >= N) {
+                    cnt++;
+                }
             }
         }
 
