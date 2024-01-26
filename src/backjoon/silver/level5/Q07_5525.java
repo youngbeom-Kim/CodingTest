@@ -26,5 +26,6 @@ public class Q07_5525 {
         }
 
         System.out.println(cnt);
+
     }
 }
