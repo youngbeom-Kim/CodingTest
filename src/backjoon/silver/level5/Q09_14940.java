@@ -47,6 +47,14 @@ public class Q09_14940 {
 
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < M; j++) {
+                if (!visited[i][j]) {
+                    map[i][j] = -1;
+                }
+            }
+        }
+
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < M; j++) {
                 sb.append(map[i][j]).append(" ");
             }
             sb.deleteCharAt(sb.length() - 1);
