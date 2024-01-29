@@ -17,6 +17,7 @@ public class Q10_20529 {
         while (T-- > 0) {
 
             int N = Integer.parseInt(br.readLine());
+            st = new StringTokenizer(br.readLine());
 
             if (N > 32) {
                 sb.append(0).append("\n");
@@ -25,7 +26,6 @@ public class Q10_20529 {
 
             String[] mbti = new String[N];
 
-            st = new StringTokenizer(br.readLine());
             for (int i = 0; i < N; i++) {
                 mbti[i] = st.nextToken();
             }
