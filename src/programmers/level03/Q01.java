@@ -4,10 +4,8 @@ package programmers.level03;
 public class Q01 {
     private int solution(String s) {
 
-        //펠린드롬 문자열 길이
         for (int i = s.length(); i > 0; i--) {
-            //펠린드롬 문자 비교 시작점
-            for (int j = 0; i + j <= s.length(); j++) {
+            for (int j = 0; j + i <= s.length(); j++) {
                 boolean check = true;
                 for (int k = 0; k < i / 2; k++) {
                     if (s.charAt(j + k) != s.charAt(i + j - k - 1)) {
