@@ -1,44 +1,53 @@
 package backjoon.silver.level3;
 
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
 
 //백준 > 실버3 > N과 M(1) (15649번)
 public class Q04_15649R {
 
-    static boolean[] visit;
-    static int[] arr;
+    private static int[] arr;
+    private static boolean[] visited;
+    private static int N;
+    private static int M;
+    public static void main(String[] args) throws IOException {
 
-    public static void main(String[] args) {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
 
-        Scanner in = new Scanner(System.in);
+        N = Integer.parseInt(st.nextToken());
+        M = Integer.parseInt(st.nextToken());
 
-        int N = in.nextInt();
-        int M = in.nextInt();
+        arr = new int[N + 1];
+        visited = new boolean[N + 1];
 
-        visit = new boolean[N];
-        arr = new int[M];
-
-        bTrack(N, M, 0);
+        for (int i = 1; i <= N; i++) {
+            visited[i] = true;
+            bTrack(i, 1);
+            visited[i] = false;
+        }
 
     }
 
-    private static void bTrack(int N, int M, int depth) {
+    private static void bTrack(int start, int depth) {
+
+        arr[depth] = start;
 
         if (depth == M) {
-            for (int num : arr) {
-                System.out.print(num + " ");
+            for (int i = 1; i <= M; i++) {
+                System.out.print(arr[i] + " ");
             }
             System.out.println();
             return;
         }
 
-        for (int i = 0; i < N; i++) {
-            if (!visit[i]) {
-                visit[i] = true;
-                arr[depth] = i + 1;
-                bTrack(N, M, depth + 1);
-                visit[i] = false;
-            }
+        for (int i = 1; i <= N; i++) {
+            if (visited[i]) continue;
+            visited[i] = true;
+            bTrack(i, depth + 1);
+            visited[i] = false;
         }
 
     }
