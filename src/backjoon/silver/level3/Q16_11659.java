@@ -15,22 +15,19 @@ public class Q16_11659 {
         int N = Integer.parseInt(st.nextToken());
         int M = Integer.parseInt(st.nextToken());
 
-        int[] arr = new int[N];
+        int[] arr = new int[N + 1];
+        arr[0] = 0;
 
         st = new StringTokenizer(br.readLine());
-        for (int i = 0; i < N; i++) {
-            arr[i] = Integer.parseInt(st.nextToken());
+        for (int i = 1; i <= N; i++) {
+            arr[i] = arr[i - 1] + Integer.parseInt(st.nextToken());
         }
 
         for (int i = 0; i < M; i++) {
             st = new StringTokenizer(br.readLine());
-            int answer = 0;
             int min = Integer.parseInt(st.nextToken());
             int max = Integer.parseInt(st.nextToken());
-            for (int j = min - 1; j < max; j++) {
-                answer += arr[j];
-            }
-            System.out.println(answer);
+            System.out.println(arr[max] - arr[min - 1]);
         }
     }
 }
