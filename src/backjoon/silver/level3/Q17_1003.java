@@ -10,7 +10,7 @@ public class Q17_1003 {
         StringBuilder sb = new StringBuilder();
 
         int[] arr = new int[41];
-        arr[0] = 0;
+        arr[0] = 1;
         arr[1] = 1;
         arr[2] = 2;
 
