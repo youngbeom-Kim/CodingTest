@@ -5,7 +5,7 @@ import java.util.Queue;
 import java.util.Scanner;
 
 //백준 > 실버4 > 카드2(2164번)
-public class Q19_2164 {
+public class Q16_2164 {
     public static void main(String[] args) {
 
         Scanner in = new Scanner(System.in);
