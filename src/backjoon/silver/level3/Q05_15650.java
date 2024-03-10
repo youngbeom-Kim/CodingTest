@@ -2,7 +2,7 @@ package backjoon.silver.level3;
 
 import java.util.Scanner;
 
-public class Q05_15650R {
+public class Q05_15650 {
     static int[] arr;
     static int N, M;
     public static void main(String[] args) {
