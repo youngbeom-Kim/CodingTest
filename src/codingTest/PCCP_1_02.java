@@ -2,20 +2,30 @@ package codingTest;
 
 //체육 대회 (dfs, 순열 조합) - 보류
 public class PCCP_1_02 {
+    private static int answer;
     public int solution(int[][] ability) {
 
-        int answer = 0;
+        answer = 0;
 
-        for (int i = 0; i < ability.length; i++) {
-            permutation(0, ability);
-        }
+        permutation(0, new boolean[ability.length], ability, 0);
 
         return answer;
     }
 
-    private void permutation(int depth, int[][] ability) {
+    private void permutation(int score, boolean[] check, int[][] ability, int depth) {
+        if (depth == ability[0].length) {
+            answer = Math.max(score, answer);
 
+            return;
+        }
 
+        for (int i = 0; i < ability.length; i++) {
+            if (!check[i]) {
+                check[i] = true;
+                permutation(score + ability[i][depth], check, ability, depth + 1);
+                check[i] = false;
+            }
+        }
 
     }
 
