@@ -16,6 +16,7 @@ public class Q19_15652 {
         int M = Integer.parseInt(st.nextToken());
 
         bTrack(N, M);
+
     }
 
     private static void bTrack(int start, int depth) {
