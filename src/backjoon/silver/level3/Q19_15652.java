@@ -7,18 +7,35 @@ import java.util.StringTokenizer;
 
 //백준 > 실버3 > N과 M (4)
 public class Q19_15652 {
+    private static int N, M;
+    private static int[] arr;
+    private static StringBuilder sb = new StringBuilder();
+
     public static void main(String[] args) throws IOException {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
 
-        int N = Integer.parseInt(st.nextToken());
-        int M = Integer.parseInt(st.nextToken());
+        N = Integer.parseInt(st.nextToken());
+        M = Integer.parseInt(st.nextToken());
+        arr = new int[M];
 
-        bTrack(N, M);
+        dfs(1, 0);
+        System.out.print(sb);
     }
 
-    private static void bTrack(int start, int depth) {
+    private static void dfs(int start, int depth) {
+        if (depth == M) {
+            for (int num : arr) {
+                sb.append(num).append(" ");
+            }
+            sb.append("\n");
+            return;
+        }
 
+        for (int i = start; i <= N; i++) {
+            arr[depth] = i;
+            dfs(i, depth + 1);
+        }
     }
 }
