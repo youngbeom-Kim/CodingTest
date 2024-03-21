@@ -27,6 +27,5 @@ public class Q11_1149 {
         }
 
         System.out.println(Math.min(arr[N][0], Math.min(arr[N][1], arr[N][2])));
-
     }
 }
