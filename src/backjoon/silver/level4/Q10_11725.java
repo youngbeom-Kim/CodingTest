@@ -4,5 +4,6 @@ package backjoon.silver.level4;
 public class Q10_11725 {
     public static void main(String[] args) {
 
+
     }
 }
